@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import Home from "./pages/home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";

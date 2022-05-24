@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { signIn } from "../api";
@@ -58,14 +59,17 @@ const initialState = {
 
 const Login = () => {
   const [formData, setFormData] = useState(initialState);
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    signIn(formData);
+    const action = await signIn(formData);
+    localStorage.setItem('profile', JSON.stringify({ ...action?.data }));
+    navigate('/');
   };
 
   return (
