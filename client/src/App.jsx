@@ -8,13 +8,10 @@ import Announcement from "./components/Announcement";
 
 const App = () => {
   return <>
-  <Announcement/>
   <Navbar/>
-  <Home/>
+  <Home />
   <Footer/>
-  </>
-
-
+  </>;
 };
  
 export default App;
