@@ -10,7 +10,8 @@ import Room from '@mui/icons-material/Room';
 const Container = styled.div`
   margin-left: 40px;
   display: flex;
-  gap: 40px
+  gap: 40px;
+  justify-content:space-between;
 `;
 
 const Left = styled.div`
@@ -43,7 +44,7 @@ const SocialIcon = styled.div`
 `;
 
 const Center = styled.div`
-  flex:1;
+  flex:0.7;
   padding: 20px;
   margin-right: 10px;
 `;
@@ -66,7 +67,7 @@ const ListItem = styled.li`
 `;
 
 const Right = styled.div`
-  flex:1;
+  flex:0.7;
   padding: 20px;
 `;
 

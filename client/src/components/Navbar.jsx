@@ -34,12 +34,18 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+}
+
 `;
 
 const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
+  &:hover {
+    transform: scale(1.07);
+    font-weight: 600;
+  }
 `;
 
 const MenuLink = styled.div`
@@ -47,6 +53,10 @@ const MenuLink = styled.div`
   cursor: pointer;
   margin-left: 25px;
   text-decoration: none;
+  &:hover {
+    transform: scale(1.07);
+    font-weight: 500;
+  }
 `;
 
 const Language = styled.span`
@@ -69,6 +79,7 @@ const Input = styled.input`
 const linkStyle = {
   textDecoration: "none",
   color: "black",
+  
 };
 
 const Navbar = () => {
@@ -110,16 +121,19 @@ const Navbar = () => {
             <div>Hello. {user.result.name}</div>
           ) : (
             <>
+            {/*
               <MenuLink>
                 <Link to="/user/signup" style={linkStyle}>
                   Register
                 </Link>
               </MenuLink>
+               */}
               <MenuLink>
                 <Link to="/user/signin" style={linkStyle}>
-                  Sign In
+                  Login
                 </Link>
               </MenuLink>
+         
             </>
           )}
           <MenuItem>

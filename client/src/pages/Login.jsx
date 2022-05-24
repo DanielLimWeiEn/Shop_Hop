@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 import { signIn } from "../api";
 
 const Container = styled.div`
@@ -33,6 +33,7 @@ const Form = styled.form`
 const Title = styled.h1`
   font-size: 24px;
   font-weight: 300;
+  text-align: center;
 `;
 
 const Input = styled.input`
@@ -42,15 +43,46 @@ const Input = styled.input`
   padding: 10px;
 `;
 
+const ButtonCon = styled.div`
+    text-align:center;
+`
 const Button = styled.button`
   width: 40%;
   border: none;
   padding: 15px 20px;
-  background-color: #ff66ff;
+  background-color: #bf8040;
   color: white;
   cursor: pointer;
-  margin-bottom: 10px;
+  margin: 10px 0px;
+
+  &:hover {
+    transform: scale(1.05);
 `;
+
+const RegButton = styled.button`
+
+  border: none;
+  padding: 15px 20px;
+  background-color: #e6ac00;
+  color: white;
+  cursor: pointer;
+  margin: 10px 0px;
+
+  &:hover {
+    transform: scale(1.05);
+`;
+
+const RegDesc = styled.div`
+    font-size: 15px;
+    margin-top: 10px;
+    color: #8c8c8c;
+    text-align:center;
+`;
+
+const linkStyle = {
+    textDecoration: "none",
+    color: "white",
+  };
 
 const initialState = {
   email: "",
@@ -75,12 +107,18 @@ const Login = () => {
   return (
     <Container>
       <Wrapper>
-        <Title>SIGN IN</Title>
+        <Title>LOGIN</Title>
         <Form onSubmit={handleSubmit}>
           <Input name="email" onChange={handleChange} type="email" placeholder="Email"/>
           <Input name="password" onChange={handleChange} type="password" placeholder="Password"/>
+          <ButtonCon>
           <Button>Sign In</Button>
+          </ButtonCon>
         </Form>
+        <RegDesc>New to ShopHop?</RegDesc>
+        <ButtonCon>
+        <RegButton><Link to="/user/signup" style={linkStyle}>Create your ShopHop Account</Link></RegButton>
+        </ButtonCon>
       </Wrapper>
     </Container>
   );
