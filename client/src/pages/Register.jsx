@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from "styled-components"
 
 import { signUp } from '../api';
@@ -65,6 +66,7 @@ const initialState = {
 
 const Register = () => {
   const [formData, setFormData] = useState(initialState);
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -74,6 +76,7 @@ const Register = () => {
     event.preventDefault();
     const action = await signUp(formData);
     localStorage.setItem('profile', JSON.stringify({ ...action?.data }));
+    navigate('/');
   };
 
   return (
