@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Badge from '@mui/material/Badge';
+import { Link } from 'react-router-dom';
 
 
 const Container = styled.div`
@@ -40,6 +41,14 @@ const MenuItem = styled.div `
     cursor:pointer;
     margin-left: 25px;
 `
+
+const MenuLink = styled.div `
+    font-size: 14px;
+    cursor:pointer;
+    margin-left: 25px;
+    text-decoration: none;
+`
+
 const Language = styled.span`
     font-size: 14px;
     cursor:pointer;
@@ -57,6 +66,13 @@ const Input = styled.input`
     border: none;
 `
 
+const linkStyle = {
+    textDecoration: "none",
+    color: 'black',
+
+    
+  };
+
 const Navbar = () => {
   return (
     <Container>
@@ -68,10 +84,10 @@ const Navbar = () => {
                     <Search style ={{color:"gray", fontSize: 16}}/>
                 </SearchContainer>
             </Left>
-            <Center><Logo>ShopHop</Logo></Center>
+            <Center><Logo><Link to = "/" style={linkStyle}>ShopHop</Link></Logo></Center>
             <Right>
-                <MenuItem>Register</MenuItem>
-                <MenuItem>Sign In</MenuItem>
+                <MenuLink><Link to = "/user/signup" style={linkStyle}>Register</Link></MenuLink>
+                <MenuLink><Link to = "/user/signin" style={linkStyle}>Sign In</Link></MenuLink>
                 <MenuItem>
                     <Badge badgeContent={4} color="secondary">
                       <ShoppingCartOutlinedIcon/>
