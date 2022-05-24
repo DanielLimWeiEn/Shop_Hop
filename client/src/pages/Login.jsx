@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+
+import { signIn } from "../api";
 
 const Container = styled.div`
   width: 100vw;
@@ -49,14 +51,30 @@ const Button = styled.button`
   margin-bottom: 10px;
 `;
 
+const initialState = {
+  email: "",
+  password: "",
+};
+
 const Login = () => {
+  const [formData, setFormData] = useState(initialState);
+
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    signIn(formData);
+  };
+
   return (
     <Container>
       <Wrapper>
         <Title>SIGN IN</Title>
-        <Form>
-          <Input placeholder="Email"/>
-          <Input placeholder="Password"/>
+        <Form onSubmit={handleSubmit}>
+          <Input name="email" onChange={handleChange} type="email" placeholder="Email"/>
+          <Input name="password" onChange={handleChange} type="password" placeholder="Password"/>
           <Button>Sign In</Button>
         </Form>
       </Wrapper>

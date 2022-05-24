@@ -1,4 +1,7 @@
+import React, { useState } from 'react';
 import styled from "styled-components"
+
+import { signUp } from '../api';
 
 const Container = styled.div`
   width: 100vw;
@@ -53,21 +56,40 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+const initialState = {
+  name: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
+
 const Register = () => {
+  const [formData, setFormData] = useState(initialState);
+
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = signUp(formData);
+    console.log(data);
+  };
+
   return (
     <Container>
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
-        <Form>
-          <Input placeholder="Username" />
-          <Input placeholder="Email" />
-          <Input placeholder="Password" />
-          <Input placeholder="Confirm Password" />
+        <Form onSubmit={handleSubmit}>
+          <Input name="name" onChange={handleChange} placeholder="Username" />
+          <Input name="email" onChange={handleChange} type="email" placeholder="Email" />
+          <Input name="password" onChange={handleChange} type="password" placeholder="Password" />
+          <Input name="confirmPassword" onChange={handleChange} type="password" placeholder="Confirm Password" />
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
-          <Button>CREATE</Button>
+          <Button type="submit">CREATE</Button>
         </Form>
       </Wrapper>
     </Container>
