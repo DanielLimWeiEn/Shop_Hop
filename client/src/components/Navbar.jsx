@@ -35,6 +35,11 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 331010bb14b62fc5465c2f59c67b1060e0429787
 `;
 
 const MenuItem = styled.div`
