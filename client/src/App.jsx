@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Announcement from "./components/Announcement";
 import Navbar from "./components/Navbar";
 import Search from './pages/Search';
+import Cart from './pages/cart';
 
 const App = () => {
   return <BrowserRouter>
@@ -17,6 +18,7 @@ const App = () => {
     <Route path="/user/signin" element={<Login/>} />
     <Route path="/user/signup" element={<Register/>} />
     <Route path="/shopping" element={<Search/>} />
+    <Route path="/cart" element={<Cart/>} />
   </Routes>
    
   <Footer/> 
