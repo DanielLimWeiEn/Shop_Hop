@@ -138,7 +138,7 @@ const Navbar = () => {
             <>
               <MenuLink>Hello, {user.result.name}</MenuLink>
               <MenuLink>
-                <loginButton textDecoration="none" onClick={logout}>Logout</loginButton>
+                <logoutButton textDecoration="none" onClick={logout}>Logout</logoutButton>
               </MenuLink>
             </>
           ) : (
