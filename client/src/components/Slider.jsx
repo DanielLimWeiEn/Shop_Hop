@@ -22,7 +22,7 @@ const Arrow = styled.div`
    justify-content: center;
    position:absolute;
    top: 0;
-   bottom 0;
+   bottom: 0;
    left: ${props=> props.direction === "left" && "10px"};
    right: ${props=> props.direction === "right" && "10px"};
    margin: auto; 
