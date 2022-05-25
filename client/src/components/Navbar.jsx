@@ -3,8 +3,9 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import Badge from "@mui/material/Badge";
-import { Link, useLocation } from "react-router-dom";
-import decode from 'jwt-decode';
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import decode from "jwt-decode";
+import { Button } from "@mui/material";
 
 const Container = styled.div`
   height: 60px;
@@ -34,8 +35,11 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 331010bb14b62fc5465c2f59c67b1060e0429787
 `;
 
 const MenuItem = styled.div`
@@ -59,6 +63,17 @@ const MenuLink = styled.div`
   }
 `;
 
+const logoutButton = styled.button`
+    font-size: 14px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.07);
+      font-weight: 500;
+    }
+`;
+
 const Language = styled.span`
   font-size: 14px;
   cursor: pointer;
@@ -79,25 +94,32 @@ const Input = styled.input`
 const linkStyle = {
   textDecoration: "none",
   color: "black",
-  
 };
 
 const Navbar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.clear();
+
+    navigate('/');
+    setUser(null);
+  }
 
   useEffect(() => {
-      const token = user?.token;
+    const token = user?.token;
 
-      if (token) {
-          const decodedToken = decode(token);
+    if (token) {
+      const decodedToken = decode(token);
 
-          if (decodedToken.exp * 1000 < new Date().getTime()) {
-          };
+      if (decodedToken.exp * 1000 < new Date().getTime()) {
       }
+    }
 
-      setUser(JSON.parse(localStorage.getItem('profile')));
-  }, [location])
+    setUser(JSON.parse(localStorage.getItem("profile")));
+  }, [location]);
 
   return (
     <Container>
@@ -118,22 +140,19 @@ const Navbar = () => {
         </Center>
         <Right>
           {user?.result ? (
-            <div>Hello. {user.result.name}</div>
+            <>
+              <MenuLink>Hello, {user.result.name}</MenuLink>
+              <MenuLink>
+                <loginButton textDecoration="none" onClick={logout}>Logout</loginButton>
+              </MenuLink>
+            </>
           ) : (
             <>
-            {/*
-              <MenuLink>
-                <Link to="/user/signup" style={linkStyle}>
-                  Register
-                </Link>
-              </MenuLink>
-               */}
               <MenuLink>
                 <Link to="/user/signin" style={linkStyle}>
                   Login
                 </Link>
               </MenuLink>
-         
             </>
           )}
           <MenuItem>
