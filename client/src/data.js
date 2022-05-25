@@ -1,6 +1,7 @@
 import shoppingImg from './images/Shopping.png'
 import pineappleImg from './images/pineapple.png'
 import fruitsandveg from './images/fruitsandveg.jpg'
+import { ShowerSharp } from '@mui/icons-material';
 export const sliderItems = [
     {
       id: 1,
@@ -42,4 +43,19 @@ export const categories = [
       img: fruitsandveg,
       title: "GROCERIES!",
     },
+];
+
+export const products = [
+  {
+    id: 1,
+    name: "Shoes",
+    image: "https://images.pexels.com/photos/10738239/pexels-photo-10738239.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    price: 100,
+  },
+  {
+    id: 2,
+    name: "Clothes",
+    image: "https://images.pexels.com/photos/45982/pexels-photo-45982.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    price: 200,
+  }
 ];

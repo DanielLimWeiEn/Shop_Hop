@@ -34,8 +34,6 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
-
 `;
 
 const MenuItem = styled.div`
@@ -58,7 +56,6 @@ const MenuLink = styled.div`
     font-weight: 500;
   }
 `;
-
 
 const Language = styled.span`
   font-size: 14px;
@@ -90,9 +87,9 @@ const Navbar = () => {
   const logout = () => {
     localStorage.clear();
 
-    navigate('/');
+    navigate("/");
     setUser(null);
-  }
+  };
 
   useEffect(() => {
     const token = user?.token;
@@ -129,7 +126,9 @@ const Navbar = () => {
             <>
               <MenuLink>Hello, {user.result.name}</MenuLink>
               <MenuLink>
-                <div textDecoration="none" onClick={logout}>Logout</div>
+                <div textDecoration="none" onClick={logout}>
+                  Logout
+                </div>
               </MenuLink>
             </>
           ) : (
@@ -141,11 +140,15 @@ const Navbar = () => {
               </MenuLink>
             </>
           )}
-          <MenuItem>
-            <Badge badgeContent={4} color="secondary">
-              <ShoppingCartOutlinedIcon />
-            </Badge>
-          </MenuItem>
+          {user?.result && (
+            <MenuItem>
+              <Link to="/cart" style={linkStyle}>
+                <Badge badgeContent={4} color="secondary">
+                  <ShoppingCartOutlinedIcon />
+                </Badge>
+              </Link>
+            </MenuItem>
+          )}
         </Right>
       </Wrapper>
     </Container>

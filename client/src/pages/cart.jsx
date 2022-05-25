@@ -1,15 +1,11 @@
 import { Add, Remove } from "@mui/icons-material";
+import { useState } from "react";
 import styled from "styled-components";
-import Announcement from "../components/Announcement";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-
 
 const Container = styled.div``;
 
 const Wrapper = styled.div`
   padding: 20px;
-
 `;
 
 const Title = styled.h1`
@@ -34,17 +30,9 @@ const TopButton = styled.button`
   color: ${(props) => props.type === "filled" && "white"};
 `;
 
-
-const TopText = styled.span`
-  text-decoration: underline;
-  cursor: pointer;
-  margin: 0px 10px;
-`;
-
 const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
-
 `;
 
 const Info = styled.div`
@@ -54,7 +42,6 @@ const Info = styled.div`
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
-
 `;
 
 const ProductDetail = styled.div`
@@ -77,15 +64,6 @@ const ProductName = styled.span``;
 
 const ProductId = styled.span``;
 
-const ProductColor = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: ${(props) => props.color};
-`;
-
-const ProductSize = styled.span``;
-
 const PriceDetail = styled.div`
   flex: 1;
   display: flex;
@@ -103,19 +81,11 @@ const ProductAmountContainer = styled.div`
 const ProductAmount = styled.div`
   font-size: 24px;
   margin: 5px;
-
 `;
 
 const ProductPrice = styled.div`
   font-size: 30px;
   font-weight: 200;
-
-`;
-
-const Hr = styled.hr`
-  background-color: #eee;
-  border: none;
-  height: 1px;
 `;
 
 const Summary = styled.div`
@@ -151,68 +121,70 @@ const Button = styled.button`
 `;
 
 const Cart = () => {
+  const [items, setItems] = useState(
+    JSON.parse(localStorage.getItem("items") || "[]")
+  );
+
+  const addOne = (event) => {
+    setItems(items.map(x => {
+      if (x.id === parseInt(event.nativeEvent.target.getAttribute('value'))) {
+        x.quantity = x.quantity + 1;
+      }
+  
+      return x;
+    }));
+
+    localStorage.setItem('items', JSON.stringify(items));
+  };
+
+  const minusOne = (event) => {
+    setItems(items.map(x => {
+      if (x.id === parseInt(event.nativeEvent.target.getAttribute('value'))) {
+        if (x.quantity > 1) {
+          x.quantity--;
+        }
+      }
+      return x;
+    }));
+
+    localStorage.setItem('items', JSON.stringify(items));
+  };
+
   return (
     <Container>
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
           <TopButton>CONTINUE SHOPPING</TopButton>
-        
           <TopButton type="filled">CHECKOUT NOW</TopButton>
         </Top>
         <Bottom>
           <Info>
-            <Product>
-              <ProductDetail>
-                <Image src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A" />
-                <Details>
-                  <ProductName>
-                    <b>Product:</b> JESSIE THUNDER SHOES
-                  </ProductName>
-                  <ProductId>
-                    <b>ID:</b> 93813718293
-                  </ProductId>
-                  <ProductColor color="black" />
-                  <ProductSize>
-                    <b>Size:</b> 37.5
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>2</ProductAmount>
-                  <Remove />
-                </ProductAmountContainer>
-                <ProductPrice>$ 30</ProductPrice>
-              </PriceDetail>
-            </Product>
-            <Hr />
-            <Product>
-              <ProductDetail>
-                <Image src="https://i.pinimg.com/originals/2d/af/f8/2daff8e0823e51dd752704a47d5b795c.png" />
-                <Details>
-                  <ProductName>
-                    <b>Product:</b> HAKURA T-SHIRT
-                  </ProductName>
-                  <ProductId>
-                    <b>ID:</b> 93813718293
-                  </ProductId>
-                  <ProductColor color="gray" />
-                  <ProductSize>
-                    <b>Size:</b> M
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>1</ProductAmount>
-                  <Remove />
-                </ProductAmountContainer>
-                <ProductPrice>$ 20</ProductPrice>
-              </PriceDetail>
-            </Product>
+            {items.map((item) => {
+              return (
+                <Product>
+                  <ProductDetail>
+                    <Image src={item.image} />
+                    <Details>
+                      <ProductName>
+                        <b>Product:</b> {item.name}
+                      </ProductName>
+                      <ProductId>
+                        <b>ID:</b> {item.id}{" "}
+                      </ProductId>
+                    </Details>
+                  </ProductDetail>
+                  <PriceDetail>
+                    <ProductAmountContainer>
+                      <Add value={item.id} onClick={addOne}/>
+                      <ProductAmount>{item.quantity}</ProductAmount>
+                      <Remove value={item.id} onClick={minusOne}/>
+                    </ProductAmountContainer>
+                    <ProductPrice>$ {item.price * item.quantity}</ProductPrice>
+                  </PriceDetail>
+                </Product>
+              );
+            })}
           </Info>
           <Summary>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
