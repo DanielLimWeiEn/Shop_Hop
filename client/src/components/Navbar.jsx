@@ -5,7 +5,6 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import Badge from "@mui/material/Badge";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import decode from "jwt-decode";
-import { Button } from "@mui/material";
 
 const Container = styled.div`
   height: 60px;
@@ -60,16 +59,6 @@ const MenuLink = styled.div`
   }
 `;
 
-const logoutButton = styled.button`
-    font-size: 14px;
-    text-decoration: none;
-    color: black;
-    cursor: pointer;
-    &:hover {
-      transform: scale(1.07);
-      font-weight: 500;
-    }
-`;
 
 const Language = styled.span`
   font-size: 14px;
@@ -140,7 +129,7 @@ const Navbar = () => {
             <>
               <MenuLink>Hello, {user.result.name}</MenuLink>
               <MenuLink>
-                <logoutButton textDecoration="none" onClick={logout}>Logout</logoutButton>
+                <div textDecoration="none" onClick={logout}>Logout</div>
               </MenuLink>
             </>
           ) : (
