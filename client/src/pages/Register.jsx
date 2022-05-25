@@ -48,6 +48,13 @@ const Agreement = styled.span`
   margin: 20px 0px;
 `;
 
+const ErrorMessage = styled.div`
+  font-size: 15px;
+  margin-top: 10px;
+  color: red;
+  text-align:center;
+`;
+
 const Button = styled.button`
   width: 40%;
   border: none;
@@ -70,6 +77,7 @@ const initialState = {
 
 const Register = () => {
   const [formData, setFormData] = useState(initialState);
+  const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -78,9 +86,18 @@ const Register = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const action = await signUp(formData);
-    localStorage.setItem('profile', JSON.stringify({ ...action?.data }));
-    navigate('/');
+
+    try {
+      const action = await signUp(formData);
+
+      localStorage.setItem('profile', JSON.stringify({ ...action?.data }));
+      setErrorMessage(null);
+      navigate('/');
+    } catch (error) {
+      if (error.response && error.response.status >= 400 && error.response.status <= 500) {
+        setErrorMessage(error.response.data.message);
+      }
+    }
   };
 
   return (
@@ -92,6 +109,7 @@ const Register = () => {
           <Input name="email" onChange={handleChange} type="email" placeholder="Email" />
           <Input name="password" onChange={handleChange} type="password" placeholder="Password" />
           <Input name="confirmPassword" onChange={handleChange} type="password" placeholder="Confirm Password" />
+          {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>

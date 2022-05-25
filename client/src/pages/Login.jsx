@@ -44,8 +44,8 @@ const Input = styled.input`
 `;
 
 const ButtonCon = styled.div`
-    text-align:center;
-`
+  text-align: center;
+`;
 const Button = styled.button`
   width: 40%;
   border: none;
@@ -61,7 +61,6 @@ const Button = styled.button`
 `;
 
 const RegButton = styled.button`
-
   border: none;
   padding: 15px 20px;
   background-color: #e6ac00;
@@ -75,16 +74,23 @@ const RegButton = styled.button`
 `;
 
 const RegDesc = styled.div`
-    font-size: 15px;
-    margin-top: 10px;
-    color: #8c8c8c;
-    text-align:center;
+  font-size: 15px;
+  margin-top: 10px;
+  color: #8c8c8c;
+  text-align: center;
+`;
+
+const ErrorMessage = styled.div`
+  font-size: 15px;
+  margin-top: 10px;
+  color: red;
+  text-align:center;
 `;
 
 const linkStyle = {
-    textDecoration: "none",
-    color: "white",
-  };
+  textDecoration: "none",
+  color: "white",
+};
 
 const initialState = {
   email: "",
@@ -93,6 +99,7 @@ const initialState = {
 
 const Login = () => {
   const [formData, setFormData] = useState(initialState);
+  const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -101,9 +108,18 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const action = await signIn(formData);
-    localStorage.setItem('profile', JSON.stringify({ ...action?.data }));
-    navigate('/');
+    try {
+      const action = await signIn(formData);
+
+      localStorage.setItem("profile", JSON.stringify({ ...action?.data }));
+      setErrorMessage(null);
+      navigate("/");
+
+    } catch (error) {
+      if (error.response && error.response.status >= 400 && error.response.status <= 500) {
+        setErrorMessage(error.response.data.message);
+      }
+    }
   };
 
   return (
@@ -111,15 +127,30 @@ const Login = () => {
       <Wrapper>
         <Title>LOGIN</Title>
         <Form onSubmit={handleSubmit}>
-          <Input name="email" onChange={handleChange} type="email" placeholder="Email"/>
-          <Input name="password" onChange={handleChange} type="password" placeholder="Password"/>
+          <Input
+            name="email"
+            onChange={handleChange}
+            type="email"
+            placeholder="Email"
+          />
+          <Input
+            name="password"
+            onChange={handleChange}
+            type="password"
+            placeholder="Password"
+          />
+          {errorMessage && <ErrorMessage color="red">{errorMessage}</ErrorMessage>}
           <ButtonCon>
-          <Button>Sign In</Button>
+            <Button>Sign In</Button>
           </ButtonCon>
         </Form>
         <RegDesc>New to ShopHop?</RegDesc>
         <ButtonCon>
-        <RegButton><Link to="/user/signup" style={linkStyle}>Create your ShopHop Account</Link></RegButton>
+          <RegButton>
+            <Link to="/user/signup" style={linkStyle}>
+              Create your ShopHop Account
+            </Link>
+          </RegButton>
         </ButtonCon>
       </Wrapper>
     </Container>
