@@ -55,6 +55,9 @@ const Button = styled.button`
   background-color:  #ff66ff;
   color: white;
   cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
 `;
 
 const initialState = {

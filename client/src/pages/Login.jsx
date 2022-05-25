@@ -57,6 +57,7 @@ const Button = styled.button`
 
   &:hover {
     transform: scale(1.05);
+  }
 `;
 
 const RegButton = styled.button`
@@ -70,6 +71,7 @@ const RegButton = styled.button`
 
   &:hover {
     transform: scale(1.05);
+  }
 `;
 
 const RegDesc = styled.div`
