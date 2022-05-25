@@ -3,6 +3,7 @@ import ArrowLeft from '@mui/icons-material/ArrowLeft';
 import { ArrowRight } from "@mui/icons-material";
 import { useState } from "react";
 import { sliderItems } from "../data";
+import { Link } from "react-router-dom";
 
 
 const Container = styled.div`
@@ -75,6 +76,11 @@ const Button = styled.button`
     cursor:pointer;
 `;
 
+const linkStyle = {
+    textDecoration: "none",
+    color: "black",
+  };
+
 const Slider = () => {
     const [slideIndex, setSlideIndex] = useState(0);
     const handleClick = (direction) => {
@@ -98,7 +104,11 @@ const Slider = () => {
           <InfoContainer>
               <Title>{item.title}</Title>
               <Desc>{item.desc}</Desc>
-              <Button>SIGN-UP NOW</Button>
+              <Button>
+                <Link to="/shopping" style={linkStyle}>
+                  SIGN-UP NOW
+                </Link>
+              </Button>
           </InfoContainer>
         </Slide>
         ))}

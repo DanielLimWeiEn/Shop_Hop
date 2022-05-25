@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Announcement from "./components/Announcement";
 import Navbar from "./components/Navbar";
+import Search from './pages/Search';
 
 const App = () => {
   return <BrowserRouter>
@@ -15,6 +16,7 @@ const App = () => {
     <Route path="/" element={<Home/>} />
     <Route path="/user/signin" element={<Login/>} />
     <Route path="/user/signup" element={<Register/>} />
+    <Route path="/shopping" element={<Search/>} />
   </Routes>
    
   <Footer/> 
