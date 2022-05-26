@@ -81,6 +81,7 @@ const linkStyle = {
 
 const Navbar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const [items, setItems] = useState(JSON.parse(localStorage.getItem("items")));
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -102,7 +103,8 @@ const Navbar = () => {
     }
 
     setUser(JSON.parse(localStorage.getItem("profile")));
-  }, [location, user?.token]);
+    setItems(JSON.parse(localStorage.getItem('items')));
+  }, [location, user?.token, items]);
 
   return (
     <Container>
@@ -143,7 +145,7 @@ const Navbar = () => {
           {user?.result && (
             <MenuItem>
               <Link to="/cart" style={linkStyle}>
-                <Badge badgeContent={4} color="secondary">
+                <Badge badgeContent={items?.reduce((x, y) => x + y.quantity, 0)} color="secondary">
                   <ShoppingCartOutlinedIcon />
                 </Badge>
               </Link>
