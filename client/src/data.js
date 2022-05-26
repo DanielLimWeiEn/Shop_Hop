@@ -1,7 +1,7 @@
 import shoppingImg from './images/Shopping.png'
 import pineappleImg from './images/pineapple.png'
 import fruitsandveg from './images/fruitsandveg.jpg'
-import { ShowerSharp } from '@mui/icons-material';
+
 export const sliderItems = [
     {
       id: 1,

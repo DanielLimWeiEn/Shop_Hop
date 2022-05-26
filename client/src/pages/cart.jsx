@@ -1,5 +1,5 @@
 import { Add, Remove } from "@mui/icons-material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const Container = styled.div``;
@@ -126,29 +126,39 @@ const Cart = () => {
   );
 
   const addOne = (event) => {
-    setItems(items.map(x => {
-      if (x.id === parseInt(event.nativeEvent.target.getAttribute('value'))) {
-        x.quantity = x.quantity + 1;
-      }
-  
-      return x;
-    }));
+    setItems(
+      items.map((x) => {
+        if (x.id === parseInt(event.nativeEvent.target.getAttribute("value"))) {
+          x.quantity = x.quantity + 1;
+        }
 
-    localStorage.setItem('items', JSON.stringify(items));
+        return x;
+      })
+    );
+
+    localStorage.setItem("items", JSON.stringify(items));
   };
 
   const minusOne = (event) => {
-    setItems(items.map(x => {
-      if (x.id === parseInt(event.nativeEvent.target.getAttribute('value'))) {
-        if (x.quantity > 1) {
-          x.quantity--;
-        }
-      }
-      return x;
-    }));
+    setItems(
+      items
+        .map((x) => {
+          if (
+            x.id === parseInt(event.nativeEvent.target.getAttribute("value"))
+          ) {
+            if (x.quantity >= 1) {
+              x.quantity--;
+            }
+          }
 
-    localStorage.setItem('items', JSON.stringify(items));
+          return x;
+        }).filter(x => x.quantity >= 1)
+    );
   };
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
 
   return (
     <Container>
@@ -161,7 +171,7 @@ const Cart = () => {
         <Bottom>
           <Info>
             {items.map((item) => {
-              return (
+              return item.quantity > 0 && (
                 <Product>
                   <ProductDetail>
                     <Image src={item.image} />
@@ -176,9 +186,9 @@ const Cart = () => {
                   </ProductDetail>
                   <PriceDetail>
                     <ProductAmountContainer>
-                      <Add value={item.id} onClick={addOne}/>
+                      <Add value={item.id} onClick={addOne} />
                       <ProductAmount>{item.quantity}</ProductAmount>
-                      <Remove value={item.id} onClick={minusOne}/>
+                      <Remove value={item.id} onClick={minusOne} />
                     </ProductAmountContainer>
                     <ProductPrice>$ {item.price * item.quantity}</ProductPrice>
                   </PriceDetail>
