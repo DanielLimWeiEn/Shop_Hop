@@ -103,7 +103,7 @@ const Navbar = () => {
     }
 
     setUser(JSON.parse(localStorage.getItem("profile")));
-    setItems(JSON.parse(localStorage.getItem('items')));
+    setItems(JSON.parse(localStorage.getItem("items")));
   }, [location, user?.token, items]);
 
   return (
@@ -145,7 +145,10 @@ const Navbar = () => {
           {user?.result && (
             <MenuItem>
               <Link to="/cart" style={linkStyle}>
-                <Badge badgeContent={items?.reduce((x, y) => x + y.quantity, 0)} color="secondary">
+                <Badge
+                  badgeContent={items?.reduce((x, y) => x + y.quantity, 0)}
+                  color="secondary"
+                >
                   <ShoppingCartOutlinedIcon />
                 </Badge>
               </Link>

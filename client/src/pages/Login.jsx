@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
+
 import { signIn } from "../api";
 
 const Container = styled.div`
@@ -83,7 +84,7 @@ const ErrorMessage = styled.div`
   font-size: 15px;
   margin-top: 10px;
   color: red;
-  text-align:center;
+  text-align: center;
 `;
 
 const linkStyle = {
@@ -113,9 +114,12 @@ const Login = () => {
       localStorage.setItem("profile", JSON.stringify({ ...action?.data }));
       setErrorMessage(null);
       navigate("/");
-
     } catch (error) {
-      if (error.response && error.response.status >= 400 && error.response.status <= 500) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
         setErrorMessage(error.response.data.message);
       }
     }
@@ -138,7 +142,9 @@ const Login = () => {
             type="password"
             placeholder="Password"
           />
-          {errorMessage && <ErrorMessage color="red">{errorMessage}</ErrorMessage>}
+          {errorMessage && (
+            <ErrorMessage color="red">{errorMessage}</ErrorMessage>
+          )}
           <ButtonCon>
             <Button>Sign In</Button>
           </ButtonCon>

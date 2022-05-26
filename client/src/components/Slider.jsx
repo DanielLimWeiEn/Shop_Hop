@@ -2,8 +2,9 @@ import styled from "styled-components";
 import ArrowLeft from "@mui/icons-material/ArrowLeft";
 import { ArrowRight } from "@mui/icons-material";
 import { useState } from "react";
-import { sliderItems } from "../data";
 import { Link } from "react-router-dom";
+
+import { sliderItems } from "../data";
 
 const Container = styled.div`
   width: 100%;
@@ -80,7 +81,7 @@ const linkStyle = {
 
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const [user] = useState(JSON.parse(localStorage.getItem("profile")));
 
   const handleClick = (direction) => {
     if (direction === "left") {

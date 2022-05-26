@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from "styled-components"
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
-import { signUp } from '../api';
+import { signUp } from "../api";
 
 const Container = styled.div`
   width: 100vw;
@@ -23,7 +23,6 @@ const Wrapper = styled.div`
   width: 40%;
   padding: 20px;
   background-color: white;
- 
 `;
 
 const Title = styled.h1`
@@ -52,14 +51,14 @@ const ErrorMessage = styled.div`
   font-size: 15px;
   margin-top: 10px;
   color: red;
-  text-align:center;
+  text-align: center;
 `;
 
 const Button = styled.button`
   width: 40%;
   border: none;
   padding: 15px 20px;
-  background-color:  #ff66ff;
+  background-color: #ff66ff;
   color: white;
   cursor: pointer;
 
@@ -90,11 +89,15 @@ const Register = () => {
     try {
       const action = await signUp(formData);
 
-      localStorage.setItem('profile', JSON.stringify({ ...action?.data }));
+      localStorage.setItem("profile", JSON.stringify({ ...action?.data }));
       setErrorMessage(null);
-      navigate('/');
+      navigate("/");
     } catch (error) {
-      if (error.response && error.response.status >= 400 && error.response.status <= 500) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
         setErrorMessage(error.response.data.message);
       }
     }
@@ -106,9 +109,24 @@ const Register = () => {
         <Title>CREATE AN ACCOUNT</Title>
         <Form onSubmit={handleSubmit}>
           <Input name="name" onChange={handleChange} placeholder="Username" />
-          <Input name="email" onChange={handleChange} type="email" placeholder="Email" />
-          <Input name="password" onChange={handleChange} type="password" placeholder="Password" />
-          <Input name="confirmPassword" onChange={handleChange} type="password" placeholder="Confirm Password" />
+          <Input
+            name="email"
+            onChange={handleChange}
+            type="email"
+            placeholder="Email"
+          />
+          <Input
+            name="password"
+            onChange={handleChange}
+            type="password"
+            placeholder="Password"
+          />
+          <Input
+            name="confirmPassword"
+            onChange={handleChange}
+            type="password"
+            placeholder="Confirm Password"
+          />
           {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
           <Agreement>
             By creating an account, I consent to the processing of my personal
@@ -118,8 +136,7 @@ const Register = () => {
         </Form>
       </Wrapper>
     </Container>
+  );
+};
 
-  )
-}
-
-export default Register
+export default Register;

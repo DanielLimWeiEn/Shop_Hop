@@ -1,21 +1,21 @@
-import Instagram from '@mui/icons-material/Instagram';
-import Reddit from '@mui/icons-material/Reddit';
-import Twitter from '@mui/icons-material/Twitter';
-import Facebook from '@mui/icons-material/Facebook';
-import MailOutline from '@mui/icons-material/MailOutlined';
-import Phone from '@mui/icons-material/Phone';
-import styled from 'styled-components'
-import Room from '@mui/icons-material/Room';
+import Instagram from "@mui/icons-material/Instagram";
+import Reddit from "@mui/icons-material/Reddit";
+import Twitter from "@mui/icons-material/Twitter";
+import Facebook from "@mui/icons-material/Facebook";
+import MailOutline from "@mui/icons-material/MailOutlined";
+import Phone from "@mui/icons-material/Phone";
+import styled from "styled-components";
+import Room from "@mui/icons-material/Room";
 
 const Container = styled.div`
   margin-left: 40px;
   display: flex;
   gap: 40px;
-  justify-content:space-between;
+  justify-content: space-between;
 `;
 
 const Left = styled.div`
-  flex:1;
+  flex: 1;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -44,7 +44,7 @@ const SocialIcon = styled.div`
 `;
 
 const Center = styled.div`
-  flex:0.7;
+  flex: 0.7;
   padding: 20px;
   margin-right: 10px;
 `;
@@ -67,7 +67,7 @@ const ListItem = styled.li`
 `;
 
 const Right = styled.div`
-  flex:0.7;
+  flex: 0.7;
   padding: 20px;
 `;
 
@@ -78,58 +78,60 @@ const ContactItem = styled.div`
 `;
 
 const Payment = styled.img`
-    width: 50%;
+  width: 50%;
 `;
 
 const Footer = () => {
-    return (
-      <Container>
-        <Left>
-          <Logo>SHOPHOP</Logo>
-          <Desc>
-            Website that helps with price comparison using web-scraping. Buy Smarter and Save Better.
-          </Desc>
-          <SocialContainer>
-            <SocialIcon color="3B5999">
-              <Facebook />
-            </SocialIcon>
-            <SocialIcon color="E4405F">
-              <Instagram />
-            </SocialIcon>
-            <SocialIcon color="55ACEE">
-              <Twitter />
-            </SocialIcon>
-            <SocialIcon color="ff4500">
-              <Reddit />
-            </SocialIcon>
-          </SocialContainer>
-        </Left>
-        <Center>
-          <Title>Useful Links</Title>
-          <List>
-            <ListItem>Home</ListItem>
-            <ListItem>Cart</ListItem>
-            <ListItem>My Account</ListItem>
-            <ListItem>Order Tracking</ListItem>
-            <ListItem>Wishlist</ListItem>
-            <ListItem>Terms</ListItem>
-          </List>
-        </Center>
-        <Right>
-          <Title>Contact</Title>
-          <ContactItem>
-            <Room style={{marginRight:"10px"}}/> Singapore NUS School of Computing
-          </ContactItem>
-          <ContactItem>
-            <Phone style={{marginRight:"10px"}}/> +65 9999 8888
-          </ContactItem>
-          <ContactItem>
-            <MailOutline style={{marginRight:"10px"}} /> ShopHop@gmail.com
-          </ContactItem>
-          <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
-        </Right>
-      </Container>
-    );
-  };
+  return (
+    <Container>
+      <Left>
+        <Logo>SHOPHOP</Logo>
+        <Desc>
+          Website that helps with price comparison using web-scraping. Buy
+          Smarter and Save Better.
+        </Desc>
+        <SocialContainer>
+          <SocialIcon color="3B5999">
+            <Facebook />
+          </SocialIcon>
+          <SocialIcon color="E4405F">
+            <Instagram />
+          </SocialIcon>
+          <SocialIcon color="55ACEE">
+            <Twitter />
+          </SocialIcon>
+          <SocialIcon color="ff4500">
+            <Reddit />
+          </SocialIcon>
+        </SocialContainer>
+      </Left>
+      <Center>
+        <Title>Useful Links</Title>
+        <List>
+          <ListItem>Home</ListItem>
+          <ListItem>Cart</ListItem>
+          <ListItem>My Account</ListItem>
+          <ListItem>Order Tracking</ListItem>
+          <ListItem>Wishlist</ListItem>
+          <ListItem>Terms</ListItem>
+        </List>
+      </Center>
+      <Right>
+        <Title>Contact</Title>
+        <ContactItem>
+          <Room style={{ marginRight: "10px" }} /> Singapore NUS School of
+          Computing
+        </ContactItem>
+        <ContactItem>
+          <Phone style={{ marginRight: "10px" }} /> +65 9999 8888
+        </ContactItem>
+        <ContactItem>
+          <MailOutline style={{ marginRight: "10px" }} /> ShopHop@gmail.com
+        </ContactItem>
+        <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
+      </Right>
+    </Container>
+  );
+};
 
-export default Footer
+export default Footer;

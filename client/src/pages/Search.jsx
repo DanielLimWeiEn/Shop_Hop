@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Search } from "@mui/icons-material";
+
 import { products } from "../data"; // Get the data.
 
 const Container = styled.div`
@@ -57,20 +58,33 @@ const Image = styled.img`
 
 const Searching = () => {
   const onAdd = (event) => {
-    const item = { ...products.find(x => x.id === parseInt(event.target.value)), quantity: 1 };
-    if (JSON.parse(localStorage.getItem('items')) === null) {
-      localStorage.setItem('items', '[]');
+    const item = {
+      ...products.find((x) => x.id === parseInt(event.target.value)),
+      quantity: 1,
+    };
+    if (JSON.parse(localStorage.getItem("items")) === null) {
+      localStorage.setItem("items", "[]");
     }
 
-    const contains = JSON.parse(localStorage.getItem('items')).find(x => x.id === item.id);
+    const contains = JSON.parse(localStorage.getItem("items")).find(
+      (x) => x.id === item.id
+    );
     if (contains) {
-      localStorage.setItem('items',
-        JSON.stringify(JSON.parse(localStorage.getItem('items')).map(x => x.id === item.id ? { ...x, quantity: x.quantity + 1 } : x))
-      )
+      localStorage.setItem(
+        "items",
+        JSON.stringify(
+          JSON.parse(localStorage.getItem("items")).map((x) =>
+            x.id === item.id ? { ...x, quantity: x.quantity + 1 } : x
+          )
+        )
+      );
     } else {
-      localStorage.setItem('items', JSON.stringify([ ...JSON.parse(localStorage.getItem('items')), item ]));
+      localStorage.setItem(
+        "items",
+        JSON.stringify([...JSON.parse(localStorage.getItem("items")), item])
+      );
     }
-  }
+  };
 
   return (
     <Container>
@@ -87,7 +101,9 @@ const Searching = () => {
             <ProductContainer>
               <Image src={product.image} />
               <h1>{`${product.name} $ ${product.price}`}</h1>
-              <Button onClick={onAdd} value={product.id}>Add to Cart</Button>
+              <Button onClick={onAdd} value={product.id}>
+                Add to Cart
+              </Button>
             </ProductContainer>
           );
         })}
