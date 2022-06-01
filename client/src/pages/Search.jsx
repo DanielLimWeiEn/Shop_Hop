@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Search } from "@mui/icons-material";
+import SearchEngine from "../components/ SearchEngine";
 
 import { products } from "../data"; // Get the data.
 
@@ -88,13 +89,15 @@ const Searching = () => {
 
   return (
     <Container>
-      <Title>This is a shopping site</Title>
+      <SearchEngine/>
+      {/*
       <SearchContainer>
         <Input />
         <Button>
           <Search style={{ color: "gray", fontSize: 16 }} />
         </Button>
       </SearchContainer>
+  */}
       <ProductRegion>
         {products.map((product) => {
           return (
