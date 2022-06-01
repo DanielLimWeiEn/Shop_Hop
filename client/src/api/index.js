@@ -18,3 +18,4 @@ export const signIn = (formData) => API.post("/user/signin", formData);
 export const signUp = (formData) => API.post("/user/signup", formData);
 
 export const showShopping = () => API.get("/shopping");
+export const generateShopping = (formData) => API.post("/shopping/search", formData);

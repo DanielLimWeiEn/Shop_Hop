@@ -1,4 +1,3 @@
-
 import styled from "styled-components"
 
 const Container= styled.div`
@@ -52,26 +51,29 @@ const Price = styled.span`
    font-size:15px;
 `
 
-const StoreBtn = styled.button`
+const StoreBtn = styled.a`
    background-color: orange;
    border-radius: 5px;
    font-weight: 600;
 `
-const Listings = () => {
+const Listings = (props) => {
   return (
     <Container>
-      <ItemBox>
-          <Image src="https://m.media-amazon.com/images/I/71cpgD9FyNL._AC_UL480_FMwebp_QL65_.jpg"/>
-          <Description>
-              <ItemName>Man Nike Shoes Casual</ItemName>
-              <ItemInfo>Nike shoes comes along with bla bla bla</ItemInfo>
-          </Description>
-          <PriceInfo>
-              <Logo src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png"/>
-              <Price>$20.00</Price>
-              <StoreBtn>Go to Store</StoreBtn>
-          </PriceInfo>
-      </ItemBox>
+      {
+         props.listings.map(listing => {
+            return (<ItemBox>
+               <Image src={listing.image} />
+               <Description>
+                  <ItemInfo>{listing.name}</ItemInfo>
+               </Description>
+               <PriceInfo>
+                  <Logo src={listing.logo}/>
+                  <Price>{listing.price}</Price>
+                  <StoreBtn href={listing.link}>Go to Store</StoreBtn>
+               </PriceInfo>
+            </ItemBox>)
+         })
+      }
     </Container>
   )
 }

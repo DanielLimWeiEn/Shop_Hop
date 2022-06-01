@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import { useState } from "react";
 
-import SearchEngine from "../components/ SearchEngine";
-
+import SearchEngine from "../components/SearchEngine";
 import { products } from "../data"; // Get the data.
 import FilterBar from "../components/FilterBar";
 import Listings from "../components/Listings";
@@ -15,51 +15,9 @@ const Container = styled.div`
   margin-top: 20px;
 `;
 
-const SearchContainer = styled.div`
-  border: 0.5px solid gray;
-  display: flex;
-  align-items: center;
-  margin-left: 25px;
-  padding: 5px;
-`;
-
-const Input = styled.input`
-  border: none;
-  width: 400px;
-`;
-
-const Title = styled.h1``;
-
-const Button = styled.button`
-  display: flex;
-  align-items: center;
-  background: transparent;
-  border: 0.5px solid gray;
-`;
-
-const ProductRegion = styled.div`
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const ProductContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 50vw;
-  height: 30vh;
-  border: 1px solid;
-`;
-
-const Image = styled.img`
-  width: 20vw;
-  height: 30vh;
-`;
-
 const Searching = () => {
+  const [listings, setListings] = useState([]);
+
   const onAdd = (event) => {
     const item = {
       ...products.find((x) => x.id === parseInt(event.target.value)),
@@ -91,32 +49,9 @@ const Searching = () => {
 
   return (
     <Container>
-      <SearchEngine/>
-      {/*
-      <SearchContainer>
-        <Input />
-        <Button>
-          <Search style={{ color: "gray", fontSize: 16 }} />
-        </Button>
-      </SearchContainer>
-  */}
+      <SearchEngine setListings={setListings} />
       <FilterBar/>
-      <Listings/>
-      {/*
-      <ProductRegion>
-        {products.map((product) => {
-          return (
-            <ProductContainer>
-              <Image src={product.image} />
-              <h1>{`${product.name} $ ${product.price}`}</h1>
-              <Button onClick={onAdd} value={product.id}>
-                Add to Cart
-              </Button>
-            </ProductContainer>
-          );
-        })}
-      </ProductRegion>
-      */}
+      <Listings listings={listings} />
     </Container>
   );
 };
