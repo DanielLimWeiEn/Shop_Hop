@@ -58,17 +58,34 @@ const Language = styled.span`
   cursor: pointer;
 `;
 
-const SearchContainer = styled.div`
+const SearchContainer = styled.form`
+  height: 30px;
   border: 0.5px solid lightgray;
   display: flex;
-  align-items: center;
   margin-left: 25px;
-  padding: 5px;
+  
 `;
 
 const Input = styled.input`
   border: none;
+  font-size: 12px;
 `;
+
+const Button = styled.button`
+   display: flex;
+   background: transparent;
+   border:none;
+   align-items:center;
+   border-left: 0.5px solid lightgray;
+   cursor:pointer;
+   padding:6px;
+
+   &:hover{
+      background: black;
+      color: white;
+   }
+
+`
 
 const Profile = styled.div`
   display: none;
@@ -174,7 +191,9 @@ const Navbar = () => {
           <Language>EN</Language>
           <SearchContainer>
             <Input />
-            <Search style={{ color: "gray", fontSize: 16 }} />
+            <Button>
+              <Search style={{ color: "gray", fontSize: 16}} />
+            </Button>  
           </SearchContainer>
         </Left>
         <Center>

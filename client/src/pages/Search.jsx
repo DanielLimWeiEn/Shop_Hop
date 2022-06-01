@@ -1,7 +1,10 @@
 import styled from "styled-components";
-import { Search } from "@mui/icons-material";
+
+import SearchEngine from "../components/ SearchEngine";
 
 import { products } from "../data"; // Get the data.
+import FilterBar from "../components/FilterBar";
+import Listings from "../components/Listings";
 
 const Container = styled.div`
   width: 100vw;
@@ -88,13 +91,18 @@ const Searching = () => {
 
   return (
     <Container>
-      <Title>This is a shopping site</Title>
+      <SearchEngine/>
+      {/*
       <SearchContainer>
         <Input />
         <Button>
           <Search style={{ color: "gray", fontSize: 16 }} />
         </Button>
       </SearchContainer>
+  */}
+      <FilterBar/>
+      <Listings/>
+      {/*
       <ProductRegion>
         {products.map((product) => {
           return (
@@ -108,6 +116,7 @@ const Searching = () => {
           );
         })}
       </ProductRegion>
+      */}
     </Container>
   );
 };
