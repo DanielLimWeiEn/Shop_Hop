@@ -104,7 +104,7 @@ const ProfileBorder = styled.div`
 const ProfileImg = styled.img`
   border-radius: 50%;
   height: 35px;
-  width 35px;
+  width: 35px;
   cursor:pointer;
   z-index:3;
   &:hover  {
