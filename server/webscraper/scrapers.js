@@ -1,8 +1,5 @@
 import puppeteer from "puppeteer";
 
-const AMAZON_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1200px-Amazon_logo.svg.png";
-const EBAY_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/EBay_logo.svg/1200px-EBay_logo.svg.png";
-
 export const scrapeFromAmazon = async (query) => {
   let data;
   try {
@@ -32,7 +29,7 @@ export const scrapeFromAmazon = async (query) => {
             price: item.querySelector(".a-offscreen").innerText,
             image: item.querySelector(".s-image").getAttribute("src"),
             link: `https://www.amazon.sg${link}`,
-            logo: AMAZON_LOGO,
+            logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1200px-Amazon_logo.svg.png",
           };
           info.push(itemObj);
         });
@@ -72,7 +69,7 @@ export const scrapeFromEbay = async (query) => {
             price: item.querySelector(".s-item__price").innerText,
             image: item.querySelector(".s-item__image-img").getAttribute("src"),
             link: link,
-            logo: EBAY_LOGO,
+            logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/EBay_logo.svg/1200px-EBay_logo.svg.png",
           };
           info.push(itemObj);
         });
