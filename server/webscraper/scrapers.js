@@ -19,7 +19,18 @@ export const scrapeFromAmazon = async (query) => {
         );
         const info = [];
         items.forEach((item) => {
-          info.push(item.querySelector(".a-offscreen").innerText);
+          let link = item
+            .querySelector(".a-link-normal.s-no-outline")
+            .getAttribute("href");
+          let itemObj = {
+            name: item.querySelector(
+              ".a-size-base-plus.a-color-base.a-text-normal"
+            ).innerText,
+            price: item.querySelector(".a-offscreen").innerText,
+            image: item.querySelector(".s-image").getAttribute("src"),
+            link: `https://www.amazon.sg${link}`,
+          };
+          info.push(itemObj);
         });
         return info;
       });
@@ -28,8 +39,8 @@ export const scrapeFromAmazon = async (query) => {
       await browser.close();
     })();
   } catch (error) {
+    console.log(error);
     data = [];
-    await browser.close();
   }
   return data;
 };
