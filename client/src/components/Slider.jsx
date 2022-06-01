@@ -1,10 +1,9 @@
 import styled from "styled-components";
 import ArrowLeft from "@mui/icons-material/ArrowLeft";
 import { ArrowRight } from "@mui/icons-material";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-
+import { useState } from "react";
 import { sliderItems } from "../data";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -72,6 +71,9 @@ const Button = styled.button`
   font-size: 20px;
   background-color: transparent;
   cursor: pointer;
+  &:hover {
+    background-color: #fae6ff;
+  }
 `;
 
 const linkStyle = {
@@ -90,11 +92,6 @@ const Slider = () => {
       setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
     }
   };
-
-  useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem("profile")));
-  }, [user]);
-
   return (
     <Container>
       <Arrow direction="left" onClick={() => handleClick("left")}>

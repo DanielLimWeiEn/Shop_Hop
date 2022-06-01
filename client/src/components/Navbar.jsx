@@ -1,4 +1,4 @@
-import { Search } from "@mui/icons-material";
+import { Person, Search, Logout } from "@mui/icons-material";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
@@ -49,12 +49,8 @@ const MenuItem = styled.div`
 const MenuLink = styled.div`
   font-size: 14px;
   cursor: pointer;
-  margin-left: 25px;
   text-decoration: none;
-  &:hover {
-    transform: scale(1.07);
-    font-weight: 500;
-  }
+  margin-right: 30px;
 `;
 
 const Language = styled.span`
@@ -74,6 +70,71 @@ const Input = styled.input`
   border: none;
 `;
 
+const Profile = styled.div`
+  display: none;
+  font-size: 14px;
+  margin-top: 5px;
+  height: 130px;
+  width: 100px;
+  padding-top: 5px;
+  border-radius:10px;
+  background-color: rgba(255,153,153,0.7);
+  color:white;
+  border: 1px solid;
+  z-index:2;
+`;
+
+const ProfileDrop = styled.div`
+  display:flex;
+  justify-content:center;
+  margin-right: 10px;
+  &:hover ${Profile} {
+    display:block;
+  }
+`;
+
+const ProfileBorder = styled.div`
+  display: flex;
+  flex-direction:column;
+  align-items:center;
+  z-index:2;
+  position:absolute;
+  top: 40px;
+`
+const ProfileImg = styled.img`
+  border-radius: 50%;
+  height: 35px;
+  width 35px;
+  cursor:pointer;
+  z-index:3;
+  &:hover  {
+    transform: scale(1.07);
+  }
+
+`
+
+
+const ListItem = styled.li`
+  display:flex;
+  padding: 10px;
+  text-align:center;
+  cursor:pointer;
+  align-items:center;
+  &:hover  {
+    color:black;
+    background-color: white;
+  }
+`
+
+const ListTitle = styled.span`
+  padding-left: 10px;
+  font-size:14px;
+`
+const ProfileName = styled.span`
+  font-size:14px;
+  padding-left: 10px;
+  font-weight: 700;
+`
 const linkStyle = {
   textDecoration: "none",
   color: "black",
@@ -126,12 +187,28 @@ const Navbar = () => {
         <Right>
           {user?.result ? (
             <>
+         
               <MenuLink>Hello, {user.result.name}</MenuLink>
-              <MenuLink>
-                <div textDecoration="none" onClick={logout}>
-                  Logout
-                </div>
-              </MenuLink>
+              
+              <ProfileDrop>
+                <ProfileBorder>
+                  <ProfileImg src = "https://img.favpng.com/12/20/1/computer-icons-user-profile-login-avatar-png-favpng-EphX5rTBCrk1QLtEWPmS9h1M9.jpg"/>
+               
+                 <Profile>
+                   <ListTitle>Signed in as </ListTitle>
+                   <ProfileName>{user.result.name}</ProfileName>
+								  <ListItem><Person/>Profile</ListItem>
+								  <ListItem>
+                    <Logout/>
+                       <div textDecoration="none" onClick={logout}>
+                         Logout
+                       </div>         
+                  </ListItem>
+							   </Profile>
+        
+                 </ProfileBorder>
+              </ProfileDrop>   
+
             </>
           ) : (
             <>
@@ -142,6 +219,8 @@ const Navbar = () => {
               </MenuLink>
             </>
           )}
+          
+          
           {user?.result && (
             <MenuItem>
               <Link to="/cart" style={linkStyle}>
@@ -154,6 +233,8 @@ const Navbar = () => {
               </Link>
             </MenuItem>
           )}
+          
+          
         </Right>
       </Wrapper>
     </Container>

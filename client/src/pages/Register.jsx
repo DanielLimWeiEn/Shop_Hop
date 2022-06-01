@@ -107,7 +107,7 @@ const Register = () => {
     <Container>
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} required>
           <Input name="name" onChange={handleChange} placeholder="Username" />
           <Input
             name="email"
@@ -120,12 +120,16 @@ const Register = () => {
             onChange={handleChange}
             type="password"
             placeholder="Password"
+            minLength={5}
+            title = "Please enter a password with at least 5 characters"
           />
           <Input
             name="confirmPassword"
             onChange={handleChange}
             type="password"
             placeholder="Confirm Password"
+            minLength={5}
+            title= "Please enter a password with at least 5 characters"
           />
           {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
           <Agreement>
