@@ -159,6 +159,13 @@ const linkStyle = {
   color: "black",
 };
 
+const diffLink = {
+  textDecoration: "none",
+  fontWeight:  600,
+  color: "purple"
+
+}
+
 const Navbar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const [items, setItems] = useState(JSON.parse(localStorage.getItem("items")));
@@ -192,9 +199,11 @@ const Navbar = () => {
         <Left>
           <Language>EN</Language>
             <Button>
-              <Link to="/shopping">
-              Start Searching Today!
+              <Link to="/shopping" style={diffLink}>
+              Start Searching 
               </Link>
+              <Search/>
+
             </Button>  
         </Left>
         <Center>

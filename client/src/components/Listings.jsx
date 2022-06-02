@@ -57,10 +57,23 @@ const StoreBtn = styled.a`
    border-radius: 5px;
    font-weight: 600;
 `
+const Box = styled.div`
+   height: 100vh;
+   display: flex;
+   align-items: center;
+   justify-content:center;
+   flex-direction: column;
+   gap: 20px;
+`
 const Listings = (props) => {
   return (
     <Container>
-      {  props.isSearching ? <CircularProgress /> : 
+      {  props.isSearching ? 
+      <Box>
+         <h1>Web-Scraping in progress</h1>
+         <CircularProgress /> 
+      </Box>
+      : 
          props.listings.map(listing => {
             return (<ItemBox>
                <Image src={listing.image} />

@@ -17,7 +17,6 @@ const Container = styled.div`
 const Left =styled.div``
 
 const Right = styled.div`
-
 `
 const ProductsNo= styled.span`
   font-size: 14px;
@@ -30,7 +29,6 @@ const FilterBox =styled.div`
 `
    
 const Button = styled.button`
-
   display:flex;
   width:130px;
   align-items:center;
@@ -53,7 +51,6 @@ const SortList = styled.ul`
   list-style: none;
   padding: 0;
   margin-left: 10px;
-
 `
 
 const SortElement = styled.li`
