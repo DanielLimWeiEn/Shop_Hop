@@ -18,7 +18,7 @@ const SearchBar = styled.input`
 
 const Button = styled.button`
    display: flex;
-   background: transparent;
+   background-color: #ccccff;
    border:none;
    align-items:center;
    border-left: 1px solid;
@@ -26,8 +26,8 @@ const Button = styled.button`
    padding:20px;
 
    &:hover{
-      background: black;
-      color: white;
+      background-color: #b3b3ff;
+      color: black;
    }
 
 `
@@ -54,7 +54,7 @@ const SearchEngine = (props) => {
     <Container onSubmit={handleSubmit}>
       <SearchBar onChange={handleChange} name="query"/>
       <Button type="submit">
-        <Search style={{ color: "gray", fontSize: 16 }} />
+        <Search style={{ color: "black", fontSize: 16 }} />
          Search
       </Button>
     </Container>

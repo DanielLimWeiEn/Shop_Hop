@@ -95,7 +95,7 @@ const Profile = styled.div`
   width: 100px;
   padding-top: 5px;
   border-radius:10px;
-  background-color: rgba(255,153,153,0.7);
+  background-color: rgba(255,153,153,0.9);
   color:white;
   border: 1px solid;
   z-index:2;

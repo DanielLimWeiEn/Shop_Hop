@@ -9,6 +9,9 @@ const Container = styled.div`
   display: flex;
   justify-content:space-between;
   align-items:center;
+  background-color: #ccb3ff;
+  border-radius:  10px;
+  margin-top: 10px;
 `
 
 const Left =styled.div``
@@ -32,7 +35,38 @@ const Button = styled.button`
   align-items:center;
   justify-content:space-between;
   background-color:white;
+  padding: 5px 2px;
   margin: 0px 10px;
+  border 1.5px solid black;
+  &:hover ${SortList} {
+    display:block;
+  }
+  
+`
+
+const Dropdown = styled.div`
+  z-index:3;
+  position: relative;
+  display: inline-block;
+
+  
+`
+
+const SortList = styled.ul`
+  position: absolute;
+  display: none;
+  padding:0;
+  padding-left: 10px;
+  background:lightblue;
+  list-style: none;
+  
+
+`
+
+const SortElement = styled.li`
+  background: orange;
+  width: 130px;
+
 `
 
 
@@ -47,7 +81,15 @@ const FilterBar = () => {
       <Right>
         <FilterBox>
           Sort By:
-          <Button>Relevance<KeyboardArrowDown style={{fontSize: 14}}/></Button>
+          <Dropdown>
+            <Button>Relevance<KeyboardArrowDown style={{fontSize: 14}}/></Button>
+            <SortList onClick={show}>
+              <SortElement>Relavance</SortElement>
+              <SortElement>Price (Low to High)</SortElement>
+              <SortElement>Price (High to Low)</SortElement>
+              <SortElement>Stores</SortElement>
+            </SortList>
+          </Dropdown>
         </FilterBox>
       </Right>
     </Container>
