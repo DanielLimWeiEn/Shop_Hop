@@ -1,6 +1,7 @@
 
 import styled from "styled-components"
 import { KeyboardArrowDown } from "@mui/icons-material";
+import Listings from "./Listings";
 
 const Container = styled.div`
   height: 30px;
@@ -17,7 +18,6 @@ const Container = styled.div`
 const Left =styled.div``
 
 const Right = styled.div`
-
 `
 const ProductsNo= styled.span`
   font-size: 14px;
@@ -30,7 +30,6 @@ const FilterBox =styled.div`
 `
    
 const Button = styled.button`
-
   display:flex;
   width:130px;
   align-items:center;
@@ -38,7 +37,7 @@ const Button = styled.button`
   background-color:white;
   padding: 5px 2px;
   margin: 0px 10px;
-  border 1.5px solid black;
+  border: 1.5px solid black;
 `
 
 const Dropdown = styled.div`
@@ -53,7 +52,6 @@ const SortList = styled.ul`
   list-style: none;
   padding: 0;
   margin-left: 10px;
-
 `
 
 const SortElement = styled.li`
@@ -64,12 +62,16 @@ const SortElement = styled.li`
 `
 
 
-const FilterBar = () => {
+const FilterBar = (props) => {
+  const updateOrder = (event) => {
+    props.setOrder(event.target.getAttribute("value"));
+  }
+
   return (
     <Container>
       <Left>
         <ProductsNo>
-          1-48 of 200 results for "clothes"
+          {props.listings.length} results
         </ProductsNo>
       </Left>
       <Right>
@@ -78,10 +80,9 @@ const FilterBar = () => {
           <Dropdown>
             <Button>Relevance<KeyboardArrowDown style={{fontSize: 14}}/></Button>
             <SortList>
-              <SortElement>Relavance</SortElement>
-              <SortElement>Price (Low to High)</SortElement>
-              <SortElement>Price</SortElement>
-              <SortElement>Price</SortElement>
+              <SortElement key="Relevance" onClick={updateOrder} value="Relevance" >Relevance</SortElement>
+              <SortElement key="Ascending" onClick={updateOrder} value="Ascending" >Price (Low to High)</SortElement>
+              <SortElement key="Descending" onClick={updateOrder} value="Descending" >Price (High to Low)</SortElement>
             </SortList>
           </Dropdown>
         </FilterBox>
