@@ -121,7 +121,7 @@ const Register = () => {
             type="password"
             placeholder="Password"
             minLength={5}
-            title = "Please enter a password with at least 5 characters"
+            title="Please enter a password with at least 5 characters"
           />
           <Input
             name="confirmPassword"
@@ -129,7 +129,7 @@ const Register = () => {
             type="password"
             placeholder="Confirm Password"
             minLength={5}
-            title= "Please enter a password with at least 5 characters"
+            title="Please enter a password with at least 5 characters"
           />
           {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
           <Agreement>

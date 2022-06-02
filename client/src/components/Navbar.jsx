@@ -58,35 +58,15 @@ const Language = styled.span`
   cursor: pointer;
 `;
 
-const SearchContainer = styled.form`
-  height: 30px;
-  border: 0.5px solid lightgray;
-  display: flex;
-  margin-left: 25px;
-  
-`;
-
-const Input = styled.input`
-  border: none;
-  font-size: 12px;
-`;
-
 const Button = styled.button`
-   display: flex;
-   background: transparent;
-   border:none;
-   align-items:center;
-   ${'' /* border-left: 0.5px solid lightgray; */}
-   cursor:pointer;
-   padding:6px;
-   margin-left:25px;
-
-   ${'' /* &:hover{
-      background: black;
-      color: white;
-   } */}
-
-`
+  display: flex;
+  background: transparent;
+  border: none;
+  align-items: center;
+  cursor: pointer;
+  padding: 6px;
+  margin-left: 25px;
+`;
 
 const Profile = styled.div`
   display: none;
@@ -95,65 +75,63 @@ const Profile = styled.div`
   height: 130px;
   width: 100px;
   padding-top: 5px;
-  border-radius:10px;
-  background-color: rgba(255,153,153,0.9);
-  color:white;
+  border-radius: 10px;
+  background-color: rgba(255, 153, 153, 0.9);
+  color: white;
   border: 1px solid;
-  z-index:4;
+  z-index: 4;
 `;
 
 const ProfileDrop = styled.div`
-  display:flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
   margin-right: 10px;
   &:hover ${Profile} {
-    display:block;
+    display: block;
   }
 `;
 
 const ProfileBorder = styled.div`
   display: flex;
-  flex-direction:column;
-  align-items:center;
-  z-index:4;
-  position:absolute;
+  flex-direction: column;
+  align-items: center;
+  z-index: 4;
+  position: absolute;
   top: 40px;
-`
+`;
 const ProfileImg = styled.img`
   border-radius: 50%;
   height: 35px;
   width: 35px;
-  cursor:pointer;
-  z-index:4;
-  &:hover  {
+  cursor: pointer;
+  z-index: 4;
+  &:hover {
     transform: scale(1.07);
   }
-
-`
-
+`;
 
 const ListItem = styled.li`
-  display:flex;
+  display: flex;
   padding: 10px;
-  text-align:center;
-  cursor:pointer;
-  align-items:center;
+  text-align: center;
+  cursor: pointer;
+  align-items: center;
   z-index: 4;
-  &:hover  {
-    color:black;
+  &:hover {
+    color: black;
     background-color: white;
   }
-`
+`;
 
 const ListTitle = styled.span`
   padding-left: 10px;
-  font-size:14px;
-`
+  font-size: 14px;
+`;
 const ProfileName = styled.span`
-  font-size:14px;
+  font-size: 14px;
   padding-left: 10px;
   font-weight: 700;
-`
+`;
 const linkStyle = {
   textDecoration: "none",
   color: "black",
@@ -161,10 +139,9 @@ const linkStyle = {
 
 const diffLink = {
   textDecoration: "none",
-  fontWeight:  600,
-  color: "purple"
-
-}
+  fontWeight: 600,
+  color: "purple",
+};
 
 const Navbar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -198,13 +175,12 @@ const Navbar = () => {
       <Wrapper>
         <Left>
           <Language>EN</Language>
-            <Button>
-              <Link to="/shopping" style={diffLink}>
-              Start Searching 
-              </Link>
-              <Search/>
-
-            </Button>  
+          <Button>
+            <Link to="/shopping" style={diffLink}>
+              Start Searching
+            </Link>
+            <Search />
+          </Button>
         </Left>
         <Center>
           <Logo>
@@ -216,28 +192,28 @@ const Navbar = () => {
         <Right>
           {user?.result ? (
             <>
-         
               <MenuLink>Hello, {user.result.name}</MenuLink>
-              
+
               <ProfileDrop>
                 <ProfileBorder>
-                  <ProfileImg src = "https://img.favpng.com/12/20/1/computer-icons-user-profile-login-avatar-png-favpng-EphX5rTBCrk1QLtEWPmS9h1M9.jpg"/>
-               
-                 <Profile>
-                   <ListTitle>Signed in as </ListTitle>
-                   <ProfileName>{user.result.name}</ProfileName>
-								  <ListItem><Person/>Profile</ListItem>
-								  <ListItem>
-                    <Logout/>
-                       <div textDecoration="none" onClick={logout}>
-                         Logout
-                       </div>         
-                  </ListItem>
-							   </Profile>
-        
-                 </ProfileBorder>
-              </ProfileDrop>   
+                  <ProfileImg src="https://img.favpng.com/12/20/1/computer-icons-user-profile-login-avatar-png-favpng-EphX5rTBCrk1QLtEWPmS9h1M9.jpg" />
 
+                  <Profile>
+                    <ListTitle>Signed in as </ListTitle>
+                    <ProfileName>{user.result.name}</ProfileName>
+                    <ListItem>
+                      <Person />
+                      Profile
+                    </ListItem>
+                    <ListItem>
+                      <Logout />
+                      <div textDecoration="none" onClick={logout}>
+                        Logout
+                      </div>
+                    </ListItem>
+                  </Profile>
+                </ProfileBorder>
+              </ProfileDrop>
             </>
           ) : (
             <>
@@ -248,8 +224,7 @@ const Navbar = () => {
               </MenuLink>
             </>
           )}
-          
-          
+
           {user?.result && (
             <MenuItem>
               <Link to="/cart" style={linkStyle}>
@@ -262,8 +237,6 @@ const Navbar = () => {
               </Link>
             </MenuItem>
           )}
-          
-          
         </Right>
       </Wrapper>
     </Container>

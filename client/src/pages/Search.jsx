@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 
 import SearchEngine from "../components/SearchEngine";
-import { products } from "../data"; // Get the data.
 import FilterBar from "../components/FilterBar";
 import Listings from "../components/Listings";
 
@@ -51,12 +50,24 @@ const Searching = () => {
 
   useEffect(() => {
     const regex = /[0-9]*\.[0-9]*/;
-    if (order === 'Relevance') {
+    if (order === "Relevance") {
       setListings(listings.sort());
-    } else if (order === 'Descending') {
-      setListings(listings.sort((a, b) => parseFloat(a.price.match(regex)[0]) - parseFloat(b.price.match(regex)[0])));
-    } else if (order === 'Ascending') {
-      setListings(listings.sort((a, b) => parseFloat(b.price.match(regex)[0]) - parseFloat(a.price.match(regex)[0])));
+    } else if (order === "Descending") {
+      setListings(
+        listings.sort(
+          (a, b) =>
+            parseFloat(a.price.match(regex)[0]) -
+            parseFloat(b.price.match(regex)[0])
+        )
+      );
+    } else if (order === "Ascending") {
+      setListings(
+        listings.sort(
+          (a, b) =>
+            parseFloat(b.price.match(regex)[0]) -
+            parseFloat(a.price.match(regex)[0])
+        )
+      );
     }
   }, [order, listings]);
 

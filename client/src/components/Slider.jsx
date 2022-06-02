@@ -83,7 +83,7 @@ const linkStyle = {
 
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const [user] = useState(JSON.parse(localStorage.getItem("profile")));
 
   const handleClick = (direction) => {
     if (direction === "left") {
