@@ -76,14 +76,15 @@ const Button = styled.button`
    background: transparent;
    border:none;
    align-items:center;
-   border-left: 0.5px solid lightgray;
+   ${'' /* border-left: 0.5px solid lightgray; */}
    cursor:pointer;
    padding:6px;
+   margin-left:25px;
 
-   &:hover{
+   ${'' /* &:hover{
       background: black;
       color: white;
-   }
+   } */}
 
 `
 
@@ -190,12 +191,11 @@ const Navbar = () => {
       <Wrapper>
         <Left>
           <Language>EN</Language>
-          <SearchContainer>
-            <Input />
             <Button>
-              <Search style={{ color: "gray", fontSize: 16}} />
+              <Link to="/shopping">
+              Start Searching Today!
+              </Link>
             </Button>  
-          </SearchContainer>
         </Left>
         <Center>
           <Logo>

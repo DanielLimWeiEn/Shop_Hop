@@ -1,7 +1,6 @@
 
 import styled from "styled-components"
 import { KeyboardArrowDown } from "@mui/icons-material";
-import Listings from "./Listings";
 
 const Container = styled.div`
   height: 30px;
