@@ -1,6 +1,7 @@
 
 import styled from "styled-components"
 import { KeyboardArrowDown } from "@mui/icons-material";
+import Listings from "./Listings";
 
 const Container = styled.div`
   height: 30px;
@@ -64,12 +65,16 @@ const SortElement = styled.li`
 `
 
 
-const FilterBar = () => {
+const FilterBar = (props) => {
+  const updateOrder = (event) => {
+    props.setOrder(event.target.getAttribute("value"));
+  }
+
   return (
     <Container>
       <Left>
         <ProductsNo>
-          1-48 of 200 results for "clothes"
+          {props.listings.length} results
         </ProductsNo>
       </Left>
       <Right>
@@ -78,10 +83,9 @@ const FilterBar = () => {
           <Dropdown>
             <Button>Relevance<KeyboardArrowDown style={{fontSize: 14}}/></Button>
             <SortList>
-              <SortElement>Relavance</SortElement>
-              <SortElement>Price (Low to High)</SortElement>
-              <SortElement>Price</SortElement>
-              <SortElement>Price</SortElement>
+              <SortElement key="Relevance" onClick={updateOrder} value="Relevance" >Relevance</SortElement>
+              <SortElement key="Ascending" onClick={updateOrder} value="Ascending" >Price (Low to High)</SortElement>
+              <SortElement key="Descending" onClick={updateOrder} value="Descending" >Price (High to Low)</SortElement>
             </SortList>
           </Dropdown>
         </FilterBox>

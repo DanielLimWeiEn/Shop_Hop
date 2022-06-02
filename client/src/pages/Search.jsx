@@ -49,19 +49,20 @@ const Searching = () => {
   };
 
   useEffect(() => {
+    const regex = /[0-9]*\.[0-9]*/;
     if (order === 'Relevance') {
-      setListings(listings);
-    } else if (order === 'Ascending') {
-      setListings(listings.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)));
+      setListings(listings.sort());
     } else if (order === 'Descending') {
-      setListings(listings.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)));
+      setListings(listings.sort((a, b) => parseFloat(a.price.match(regex)[0]) - parseFloat(b.price.match(regex)[0])));
+    } else if (order === 'Ascending') {
+      setListings(listings.sort((a, b) => parseFloat(b.price.match(regex)[0]) - parseFloat(a.price.match(regex)[0])));
     }
-  }, [order]);
+  }, [order, listings]);
 
   return (
     <Container>
       <SearchEngine setListings={setListings} />
-      <FilterBar setOrder={setOrder} />
+      <FilterBar setOrder={setOrder} listings={listings} />
       <Listings listings={listings} />
     </Container>
   );
