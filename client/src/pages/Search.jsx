@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import SearchEngine from "../components/SearchEngine";
 import { products } from "../data"; // Get the data.
@@ -17,6 +17,7 @@ const Container = styled.div`
 
 const Searching = () => {
   const [listings, setListings] = useState([]);
+  const [order, setOrder] = useState("Relevance");
 
   const onAdd = (event) => {
     const item = {
@@ -47,10 +48,20 @@ const Searching = () => {
     }
   };
 
+  useEffect(() => {
+    if (order === 'Relevance') {
+      setListings(listings);
+    } else if (order === 'Ascending') {
+      setListings(listings.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)));
+    } else if (order === 'Descending') {
+      setListings(listings.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)));
+    }
+  }, [order]);
+
   return (
     <Container>
       <SearchEngine setListings={setListings} />
-      <FilterBar/>
+      <FilterBar setOrder={setOrder} />
       <Listings listings={listings} />
     </Container>
   );

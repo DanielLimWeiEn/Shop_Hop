@@ -38,7 +38,7 @@ const Button = styled.button`
   background-color:white;
   padding: 5px 2px;
   margin: 0px 10px;
-  border 1.5px solid black;
+  border: 1.5px solid black;
 `
 
 const Dropdown = styled.div`
