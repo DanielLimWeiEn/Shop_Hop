@@ -4,12 +4,12 @@ export const scrapeFromAmazon = async (query) => {
   let data;
   try {
     await (async () => {
-      const browser = await puppeteer.launch({ headless: false });
+      const browser = await puppeteer.launch();
       const page = await browser.newPage();
 
       await page.goto("https://www.amazon.sg");
 
-      await page.type("#twotabsearchtextbox", query, { delay: 1000 });
+      await page.type("#twotabsearchtextbox", query);
       await page.click("#nav-search-submit-button");
       await page.waitForNavigation();
 
@@ -50,12 +50,12 @@ export const scrapeFromEbay = async (query) => {
   let data;
   try {
     await (async () => {
-      const browser = await puppeteer.launch({ headless: false });
+      const browser = await puppeteer.launch();
       const page = await browser.newPage();
 
       await page.goto("https://www.ebay.com");
 
-      await page.type("#gh-ac", query, { delay: 1000 });
+      await page.type("#gh-ac", query);
       await page.click("#gh-btn");
       await page.waitForNavigation();
 
