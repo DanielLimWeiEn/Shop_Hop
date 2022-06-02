@@ -175,12 +175,14 @@ const Navbar = () => {
       <Wrapper>
         <Left>
           <Language>EN</Language>
-          <Button>
-            <Link to="/shopping" style={diffLink}>
-              Start Searching
-            </Link>
-            <Search />
-          </Button>
+          {user && (
+            <Button>
+              <Link to="/shopping" style={diffLink}>
+                Start Searching
+              </Link>
+              <Search />
+            </Button>
+          )}
         </Left>
         <Center>
           <Logo>
