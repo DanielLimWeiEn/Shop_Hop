@@ -22,7 +22,7 @@ const Searching = () => {
 
   const onAdd = (event) => {
     const item = {
-      ...products.find((x) => x.id === parseInt(event.target.value)),
+      ...listings.find((x) => x.id === parseInt(event.target.value)),
       quantity: 1,
     };
     if (JSON.parse(localStorage.getItem("items")) === null) {
@@ -64,7 +64,7 @@ const Searching = () => {
     <Container>
       <SearchEngine setListings={setListings} setIsSearching={setIsSearching} />
       <FilterBar setOrder={setOrder} listings={listings} />
-      <Listings listings={listings} isSearching={isSearching} />
+      <Listings listings={listings} isSearching={isSearching} onAdd={onAdd} />
     </Container>
   );
 };

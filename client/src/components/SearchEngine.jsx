@@ -54,7 +54,7 @@ const SearchEngine = (props) => {
       props.setIsSearching(false);
       
       const items = action.data.data;
-      props.setListings(items);
+      props.setListings(items.map((val, index) => {return { ...val, id: index }}));
    }
 
   return (
