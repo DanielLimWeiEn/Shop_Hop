@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { CircularProgress } from '@mui/material';
 
 const Container= styled.div`
   overflow-y:scroll;
@@ -59,7 +60,7 @@ const StoreBtn = styled.a`
 const Listings = (props) => {
   return (
     <Container>
-      {
+      {  props.isSearching ? <CircularProgress /> : 
          props.listings.map(listing => {
             return (<ItemBox>
                <Image src={listing.image} />

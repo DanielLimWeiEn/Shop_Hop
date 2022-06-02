@@ -18,6 +18,7 @@ const Container = styled.div`
 const Searching = () => {
   const [listings, setListings] = useState([]);
   const [order, setOrder] = useState("Relevance");
+  const [isSearching, setIsSearching] = useState(false);
 
   const onAdd = (event) => {
     const item = {
@@ -61,9 +62,9 @@ const Searching = () => {
 
   return (
     <Container>
-      <SearchEngine setListings={setListings} />
+      <SearchEngine setListings={setListings} setIsSearching={setIsSearching} />
       <FilterBar setOrder={setOrder} listings={listings} />
-      <Listings listings={listings} />
+      <Listings listings={listings} isSearching={isSearching} />
     </Container>
   );
 };

@@ -45,7 +45,14 @@ const SearchEngine = (props) => {
 
    const handleSubmit = async (event) => {
       event.preventDefault();
+      if (formData.query === "") {
+         return; 
+      }
+
+      props.setIsSearching(true);
       const action = await generateShopping(formData);
+      props.setIsSearching(false);
+      
       const items = action.data.data;
       props.setListings(items);
    }
