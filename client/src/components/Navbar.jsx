@@ -98,7 +98,7 @@ const Profile = styled.div`
   background-color: rgba(255,153,153,0.9);
   color:white;
   border: 1px solid;
-  z-index:2;
+  z-index:4;
 `;
 
 const ProfileDrop = styled.div`
@@ -114,7 +114,7 @@ const ProfileBorder = styled.div`
   display: flex;
   flex-direction:column;
   align-items:center;
-  z-index:2;
+  z-index:4;
   position:absolute;
   top: 40px;
 `
@@ -123,7 +123,7 @@ const ProfileImg = styled.img`
   height: 35px;
   width: 35px;
   cursor:pointer;
-  z-index:3;
+  z-index:4;
   &:hover  {
     transform: scale(1.07);
   }
@@ -137,6 +137,7 @@ const ListItem = styled.li`
   text-align:center;
   cursor:pointer;
   align-items:center;
+  z-index: 4;
   &:hover  {
     color:black;
     background-color: white;
