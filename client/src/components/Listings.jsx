@@ -8,7 +8,7 @@ const Container = styled.div`
 `;
 
 const ItemBox = styled.div`
-  height: 100px;
+  height: 120px;
   display: flex;
   border-bottom: 1px solid grey;
   justify-content: space-between;
@@ -17,8 +17,8 @@ const ItemBox = styled.div`
 
 const Image = styled.img`
   margin-left: 20px;
-  height: 80px;
-  width: 80px;
+  height: 100px;
+  width: 100px;
 `;
 
 const Description = styled.div`
@@ -65,13 +65,17 @@ const Box = styled.div`
   gap: 20px;
 `;
 
+const ImageLoad = styled.img`
+   height: 400px;
+   width:500px;
+`
 const Listings = (props) => {
   return (
     <Container>
       {props.isSearching ? (
         <Box>
-          <h1>Web-Scraping in progress</h1>
-          <CircularProgress />
+          <h1>Web-Scraping in progress...</h1>
+          <ImageLoad src="https://i.pinimg.com/originals/66/22/ab/6622ab37c6db6ac166dfec760a2f2939.gif"/>
         </Box>
       ) : (
         props.listings.map((listing) => {
