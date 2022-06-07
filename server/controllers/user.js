@@ -3,6 +3,9 @@ import jwt from 'jsonwebtoken';
 
 import User from '../models/user.js';
 
+// @desc Sign a user in
+// @route POST /user/signin
+// @access public
 export const signin = async (req, res) => {
     const { email, password } = req.body;
 
@@ -33,6 +36,9 @@ export const signin = async (req, res) => {
     }
 };
 
+// @desc Sign a user up
+// @route POST /user/signup
+// @access public
 export const signup = async (req, res) => {
     const { name, email, password, confirmPassword } = req.body;
 
