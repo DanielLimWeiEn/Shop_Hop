@@ -10,6 +10,10 @@ const purchaseSchema = mongoose.Schema({
     price: { type: String, required: true },
     origin: { type: String, required: true },
     itemFile: { type: String, required: true },
+    purchaseDate: {
+        type: Date,
+        default: new Date()
+    }
 }, {
     timestamps: true
 });
