@@ -1,5 +1,5 @@
 import express from "express";
-import auth from "../middleware/auth";
+import auth from "../middleware/auth.js";
 import {
   showProfile,
   showPurchaseHistory,
@@ -11,16 +11,16 @@ import {
 
 const router = express.Router();
 
-router.get("/", showProfile);
+router.get("/", auth, showProfile);
 
-router.get("/history", showPurchaseHistory);
+router.get("/history", auth, showPurchaseHistory);
 
-router.get("/manage", showPurchases);
+router.get("/manage", auth, showPurchases);
 
-router.post("/manage", addPurchase);
+router.post("/manage", auth, addPurchase);
 
-router.put("/manage/:id", updatePurchase);
+router.put("/manage/:id", auth, updatePurchase);
 
-router.delete("/manage/:id", deletePurchase);
+router.delete("/manage/:id", auth, deletePurchase);
 
 export default router;
