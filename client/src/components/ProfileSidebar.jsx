@@ -42,14 +42,32 @@ const SideItem = styled.div`
   }
 `;
 
-const ProfileSidebar = () => {
+const ProfileSidebar = (props) => {
   return (
     <Side>
       <Picture src="https://img.favpng.com/12/20/1/computer-icons-user-profile-login-avatar-png-favpng-EphX5rTBCrk1QLtEWPmS9h1M9.jpg" />
-      <Greeting>Hello User</Greeting>
-      <SideItem><Link to="/profile/" style={{textDecoration: "none", color: "black"}}>Profile</Link></SideItem>
-      <SideItem><Link to="/profile/history" style={{textDecoration: "none", color: "black"}}>History</Link></SideItem>
-      <SideItem><Link to="/profile/manage" style={{textDecoration: "none", color: "black"}}>Manage Purchases</Link></SideItem>
+      <Greeting>Hello {props.user.result.name}</Greeting>
+      <SideItem>
+        <Link to="/profile/" style={{ textDecoration: "none", color: "black" }}>
+          Profile
+        </Link>
+      </SideItem>
+      <SideItem>
+        <Link
+          to="/profile/history"
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          History
+        </Link>
+      </SideItem>
+      <SideItem>
+        <Link
+          to="/profile/manage"
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          Manage Purchases
+        </Link>
+      </SideItem>
     </Side>
   );
 };
