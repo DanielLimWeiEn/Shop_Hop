@@ -60,7 +60,7 @@ const StoreBtn = styled.a`
   color: #66ff66;
   font-size: 16px;
   font-weight: 600;
-  padding: 5px;
+  padding: 5px; 
 `;
 
 const Box = styled.div`
