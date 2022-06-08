@@ -1,10 +1,15 @@
-import React from 'react'
+import styled from "styled-components"
+
+const Container = styled.div`
+   width: 85vw;
+   height: 100vh;
+`
 
 const History = () => {
   return (
-    <div>
-      HEllOOOO
-    </div>
+      <Container>
+          
+      </Container>
   )
 }
 
