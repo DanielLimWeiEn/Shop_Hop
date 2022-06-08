@@ -85,4 +85,3 @@ export const scrapeFromEbay = async (query) => {
   }
   return data;
 };
-

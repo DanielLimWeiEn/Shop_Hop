@@ -20,7 +20,7 @@ export const generateShopping = async (req, res) => {
     const { query } = req.body;
     let data1 = await scrapeFromAmazon(query);
     let data2 = await scrapeFromEbay(query);
-    let data = [...data1, ...data2];
+    let data = [...data1, ...data2, ...data3];
     res.status(200).json({ data });
   } catch (error) {
     res.status(404).json({ message: error.message });
