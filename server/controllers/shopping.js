@@ -1,5 +1,5 @@
 import express from "express";
-import { scrapeFromAmazon, scrapeFromEbay, scrapeFromLazada } from "../webscraper/scrapers.js";
+import { scrapeFromAmazon, scrapeFromEbay } from "../webscraper/scrapers.js";
 
 // @desc Show the shopping page.
 // @route GET /shopping/
@@ -20,8 +20,7 @@ export const generateShopping = async (req, res) => {
     const { query } = req.body;
     let data1 = await scrapeFromAmazon(query);
     let data2 = await scrapeFromEbay(query);
-    let data3 = await scrapeFromLazada(query)
-    let data = [...data1, ...data2, ...data3];
+    let data = [...data1, ...data2];
     res.status(200).json({ data });
   } catch (error) {
     res.status(404).json({ message: error.message });
