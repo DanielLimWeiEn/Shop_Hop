@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { Bar } from "react-chartjs-2";
+
+import ProfilePurchaseListing from "./ProfilePurchaseListing";
 
 const Container = styled.div`
   box-sizing: border-box;
@@ -14,7 +17,7 @@ const Top = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;    
+  gap: 20px;
   height: 50%;
   width: 100%;
 `;
@@ -32,10 +35,6 @@ const Summary = styled.div`
   width: 50%;
   border: 1px solid;
 `;
-// const Image = styled.img`
-//   width: 400px;
-//   height: 350px;
-// `;
 
 const Spending = styled.div`
   height: 100%;
@@ -58,19 +57,65 @@ const ItemHeading = styled.div`
   height: 40px;
 `;
 
-const History = () => {
+const SummaryBody = styled.div`
+  width: 100%;
+  height: 87%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SummarySpending = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  padding: 20px;
+  border-bottom: 2px solid;
+`;
+
+const SummaryQuote = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  padding: 20px;
+`;
+
+const History = (props) => {
   return (
     <Container>
       <Top>
         <Summary>
-          Graph
-          {/* <Image src="https://www.conceptdraw.com/solution-park/resource/images/solutions/bar-graphs/Graphs-and-Charts-Bar-Charts-Percentage-with-Various-Levels-of-Family-Income.png" /> */}
+          <ItemHeading>Chart</ItemHeading>
         </Summary>
-        <Spending>Your spending total is a morbillion dollars</Spending>
+        <Spending>
+          <ItemHeading>Summary</ItemHeading>
+          <SummaryBody>
+            <SummarySpending>
+              Total Spending:{" $"}
+              {props.purchases.data?.purchases
+                .map((x) => parseFloat(x.price.split("$")[1]))
+                .reduce((x, y) => x + y, 0)}
+            </SummarySpending>
+            <SummaryQuote>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </SummaryQuote>
+          </SummaryBody>
+        </Spending>
       </Top>
       <Bottom>
         <ItemList>
           <ItemHeading>Items Purchased</ItemHeading>
+          <ProfilePurchaseListing listings={props.purchases.data?.purchases} />
         </ItemList>
       </Bottom>
     </Container>
