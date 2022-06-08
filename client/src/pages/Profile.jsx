@@ -4,6 +4,7 @@ import { useNavigate, Link, Routes, Route } from 'react-router-dom'
 import History  from '../components/History'
 import Manage from '../components/Manage'
 import ProfileCom from '../components/ProfileCom'
+import ProfileSidebar from '../components/ProfileSidebar'
 
 const Container = styled.div`
   width: 100vw;
@@ -22,7 +23,7 @@ const Side = styled.div`
 const Profile = () => {
   return (
     <Container>
-        <Side/>
+        <ProfileSidebar />
         <Routes>
             <Route path="/" element={<ProfileCom/>}/>
             <Route path="/history" element={<div>This is GET /history/</div>}/>

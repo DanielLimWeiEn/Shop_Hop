@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import react from "react";
 import { Link } from "react-router-dom";
 
 const Side = styled.div`
@@ -15,8 +14,8 @@ const Side = styled.div`
 `;
 
 const Picture = styled.img`
-  width: 12vw;
-  height: 150px;
+  width: 8vw;
+  height: 100px;
   border-radius: 50%;
   margin-bottom: 20px;
 `;
