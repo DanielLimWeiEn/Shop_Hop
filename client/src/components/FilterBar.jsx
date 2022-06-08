@@ -17,7 +17,7 @@ const Left = styled.div``;
 
 const Right = styled.div``;
 const ProductsNo = styled.span`
-  font-size: 14px;
+  font-size: 18px;
 `;
 
 const FilterBar = (props) => {

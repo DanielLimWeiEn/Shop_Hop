@@ -8,7 +8,7 @@ const Container = styled.div`
 `;
 
 const ItemBox = styled.div`
-  height: 120px;
+  height: 140px;
   display: flex;
   border-bottom: 1px solid grey;
   justify-content: space-between;
@@ -17,20 +17,24 @@ const ItemBox = styled.div`
 
 const Image = styled.img`
   margin-left: 20px;
-  height: 100px;
+  height: 120px;
   width: 100px;
 `;
 
 const Description = styled.div`
-  margin-left: -150px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 15px;
+  align-items:center;
+  width: min(90%, 1200px);
+  height: 100px;
+  margin-left: 20px;
 `;
 
 const ItemInfo = styled.span`
-  font-size: 15px;
+  font-size: 20px;
+  font-weight:600;
+  
+  word-wrap: break-word;
+  text-overflow: ellipsis;
 `;
 
 const PriceInfo = styled.div`
@@ -38,7 +42,8 @@ const PriceInfo = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  width: 100px;
+  gap: 15px;
 `;
 
 const Logo = styled.img`
@@ -47,13 +52,15 @@ const Logo = styled.img`
 `;
 
 const Price = styled.span`
-  font-size: 15px;
+  font-size: 19px;
 `;
 
 const StoreBtn = styled.a`
-  background-color: orange;
-  border-radius: 5px;
+  text-decoration: none; 
+  color: #66ff66;
+  font-size: 16px;
   font-weight: 600;
+  padding: 5px;
 `;
 
 const Box = styled.div`
@@ -68,6 +75,11 @@ const Box = styled.div`
 const ImageLoad = styled.img`
    height: 400px;
    width:500px;
+`
+const Button = styled.div`
+  background-color:  #944dff;
+  border-radius: 5px;
+  text-align:center;
 `
 const Listings = (props) => {
   return (
@@ -88,7 +100,7 @@ const Listings = (props) => {
               <PriceInfo>
                 <Logo src={listing.logo} />
                 <Price>{listing.price}</Price>
-                <StoreBtn href={listing.link}>Go to Store</StoreBtn>
+                <Button><StoreBtn href={listing.link}>Go to Store</StoreBtn></Button>
               </PriceInfo>
             </ItemBox>
           );
