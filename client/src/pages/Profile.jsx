@@ -20,7 +20,7 @@ const Profile = () => {
       <ProfileSidebar user={user} />
       <Routes>
         <Route path="/" element={<ProfileCom user={user} />} />
-        <Route path="/history" element={<div>This is GET /history/</div>} />
+        <Route path="/history" element={<History/>} />
         <Route path="/manage" element={<Manage />} />
       </Routes>
     </Container>
