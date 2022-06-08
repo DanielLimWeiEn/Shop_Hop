@@ -9,6 +9,7 @@ import Announcement from "./components/Announcement";
 import Navbar from "./components/Navbar";
 import Search from "./pages/Search";
 import Cart from "./pages/cart";
+import Profile from "./pages/Profile";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/user/signup" element={<Register />} />
         <Route path="/shopping" element={<Search />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/profile/*" element={<Profile />} />
       </Routes>
       <Footer />
     </BrowserRouter>
