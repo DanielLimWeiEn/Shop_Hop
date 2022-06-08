@@ -1,6 +1,9 @@
 import express from "express";
 import { scrapeFromAmazon, scrapeFromEbay, scrapeFromLazada } from "../webscraper/scrapers.js";
 
+// @desc Show the shopping page.
+// @route GET /shopping/
+// @access private
 export const showShopping = (req, res) => {
   try {
     res.status(200).json({ message: "this is working" });
@@ -9,6 +12,9 @@ export const showShopping = (req, res) => {
   }
 };
 
+// @desc Call the web scrapers to scrape items.
+// @route POST /shopping/search
+// @access private
 export const generateShopping = async (req, res) => {
   try {
     const { query } = req.body;
