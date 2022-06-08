@@ -49,26 +49,30 @@ const Searching = () => {
   };
 
   useEffect(() => {
-    const regex = /[0-9]*\.[0-9]*/;
-    if (order === "Relevance") {
-      setListings(listings.sort());
-    } else if (order === "Descending") {
-      setListings(
-        listings.sort(
-          (a, b) =>
-            parseFloat(a.price.match(regex)[0]) -
-            parseFloat(b.price.match(regex)[0])
-        )
-      );
-    } else if (order === "Ascending") {
-      setListings(
-        listings.sort(
-          (a, b) =>
-            parseFloat(b.price.match(regex)[0]) -
-            parseFloat(a.price.match(regex)[0])
-        )
-      );
-    }
+    const orderValues = async () => {
+      const regex = /[0-9]*\.[0-9]*/;
+      if (order === "Relevance") {
+        setListings(listings.sort());
+      } else if (order === "Descending") {
+        setListings(
+          listings.sort(
+            (a, b) =>
+              parseFloat(a.price.match(regex)[0]) -
+              parseFloat(b.price.match(regex)[0])
+          )
+        );
+      } else if (order === "Ascending") {
+        setListings(
+          listings.sort(
+            (a, b) =>
+              parseFloat(b.price.match(regex)[0]) -
+              parseFloat(a.price.match(regex)[0])
+          )
+        );
+      }
+    };
+
+    (async () => await orderValues())();
   }, [order, listings]);
 
   return (

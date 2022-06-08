@@ -38,7 +38,6 @@ const SearchEngine = (props) => {
   const [formData, setFormData] = useState(initialState);
 
   const handleChange = (event) => {
-    console.log(formData);
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 

@@ -74,12 +74,14 @@ const Box = styled.div`
 const ImageLoad = styled.img`
    height: 400px;
    width:500px;
-`
+`;
+
 const Button = styled.div`
   background-color:  #944dff;
   border-radius: 5px;
   text-align:center;
-`
+`;
+
 const Listings = (props) => {
   return (
     <Container>
