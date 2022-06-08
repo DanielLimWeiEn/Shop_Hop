@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import react, { useState, useEffect } from "react";
-import { useNavigate, Link, Routes, Route, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import History from "../components/History";
 import Manage from "../components/Manage";
 import ProfileCom from "../components/ProfileCom";
 import ProfileSidebar from "../components/ProfileSidebar";
 
-import { showPurchaseHistory, showPurchases } from '../api/index';
+import { showPurchaseHistory, showPurchases } from "../api/index";
 
 const Container = styled.div`
   width: 100vw;
@@ -29,7 +29,7 @@ const Profile = () => {
         const response = await showPurchases();
         setPurchases(response);
       }
-    }
+    };
 
     getResponse(currentPath);
   }, [location]);

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { useNavigate } from "react-router-dom";
+
 const Container = styled.div`
   overflow-y: scroll;
   width: 100%;
@@ -72,6 +74,8 @@ const DeleteButton = styled.button`
 `;
 
 const ProfilePurchaseListing = (props) => {
+  const navigation = useNavigate();
+
   return (
     <Container>
       {props.listings?.map((listing) => {
@@ -86,8 +90,28 @@ const ProfilePurchaseListing = (props) => {
               <Price>{listing.price}</Price>
             </PriceInfo>
             <ButtonBox>
-              <EditButton>Edit</EditButton>
-              <DeleteButton>Delete</DeleteButton>
+              <EditButton
+                onClick={() => {
+                  props.setIsEdit(true);
+                  props.setFormData({
+                    description: listing.description,
+                    price: listing.price,
+                    origin: listing.origin,
+                    itemFile: listing.itemFile,
+                  });
+                  props.setPurchaseId(listing._id);
+                }}
+              >
+                Edit
+              </EditButton>
+              <DeleteButton
+                onClick={() => {
+                  props.deletePurchase(listing._id);
+                  navigation("/profile");
+                }}
+              >
+                Delete
+              </DeleteButton>
             </ButtonBox>
           </ItemBox>
         );

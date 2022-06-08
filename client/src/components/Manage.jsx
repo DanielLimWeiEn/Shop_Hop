@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import FileBase from "react-file-base64";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import ProfileManageListing from "./ProfileManageListing";
+import { addPurchase, updatePurchase, deletePurchase } from "../api";
 
 const Container = styled.div`
   box-sizing: border-box;
@@ -78,39 +81,111 @@ const FormSubmit = styled.button`
   width: 100%;
   height: 7%;
   font-size: 20px;
-`
+`;
+
+const initialState = {
+  description: "",
+  price: "",
+  origin: "",
+  itemFile: "",
+};
 
 const Manage = (props) => {
+  const [formData, setFormData] = useState(initialState);
+  const [isEdit, setIsEdit] = useState(false);
+  const [purchaseId, setPurchaseId] = useState(null);
+  const navigation = useNavigate();
+
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (
+      formData.description === "" ||
+      formData.itemFile === "" ||
+      formData.origin === "" ||
+      formData.price === ""
+    ) {
+      alert("include all fields");
+      return;
+    }
+
+    let action;
+    if (isEdit) {
+      action = await updatePurchase(purchaseId, formData);
+    } else if (!isEdit) {
+      action = await addPurchase(formData);
+    }
+
+    console.log(action?.data);
+
+    setFormData(initialState);
+    setIsEdit(false);
+    setPurchaseId(null);
+
+    navigation("/profile");
+  };
+
   return (
     <Container>
       <ItemHolder>
         <ItemHeading>Purchases</ItemHeading>
-        <ProfileManageListing listings={props.purchases.data?.purchases} />
+        <ProfileManageListing
+          listings={props.purchases.data?.purchases}
+          deletePurchase={deletePurchase}
+          setFormData={setFormData}
+          setIsEdit={setIsEdit}
+          setPurchaseId={setPurchaseId}
+        />
       </ItemHolder>
       <FormHolder>
         <ItemHeading>CRUD</ItemHeading>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <InputAndLabel>
             <InputLabel>Description:</InputLabel>
-            <FormInput id="description" name="description" />
+            <FormInput
+              onChange={handleChange}
+              id="description"
+              name="description"
+              value={formData.description}
+            />
           </InputAndLabel>
 
           <InputAndLabel>
             <InputLabel>Price:</InputLabel>
-            <FormInput id="price" name="price" />
+            <FormInput
+              onChange={handleChange}
+              id="price"
+              name="price"
+              value={formData.price}
+            />
           </InputAndLabel>
 
           <InputAndLabel>
             <InputLabel>Origin:</InputLabel>
-            <FormInput id="origin" name="origin" />
+            <FormInput
+              onChange={handleChange}
+              id="origin"
+              name="origin"
+              value={formData.origin}
+            />
           </InputAndLabel>
 
           <FileInput>
             <InputLabel>Image of Item:</InputLabel>
-            <FileBase type="file" multiple={false} />
+            <FileBase
+              type="file"
+              multiple={false}
+              onDone={({ base64 }) =>
+                setFormData({ ...formData, itemFile: base64 })
+              }
+            />
           </FileInput>
 
-          <FormSubmit>Submit</FormSubmit>
+          <FormSubmit type="submit">Submit</FormSubmit>
         </Form>
       </FormHolder>
     </Container>
