@@ -19,12 +19,14 @@ const ItemHolder = styled.div`
   height: 100%;
   width: 65%;
   border: 1px solid;
+  box-shadow: 10px 10px rgb(245, 250, 253);
 `;
 
 const FormHolder = styled.div`
   height: 100%;
   width: 35%;
   border: 1px solid;
+  box-shadow: 10px 10px rgb(245, 250, 253);
 `;
 
 const ItemHeading = styled.div`

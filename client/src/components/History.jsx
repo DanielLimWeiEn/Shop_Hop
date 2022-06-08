@@ -33,18 +33,21 @@ const Summary = styled.div`
   height: 100%;
   width: 50%;
   border: 1px solid;
+  box-shadow: 10px 10px rgb(245, 250, 253);
 `;
 
 const Spending = styled.div`
   height: 100%;
   width: 50%;
   border: 1px solid;
+  box-shadow: 10px 10px rgb(245, 250, 253);
 `;
 
 const ItemList = styled.div`
   height: 100%;
   width: 100%;
   border: 1px solid;
+  box-shadow: 10px 10px rgb(245, 250, 253);
 `;
 
 const ItemHeading = styled.div`
