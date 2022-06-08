@@ -105,9 +105,9 @@ const ProfilePurchaseListing = (props) => {
                 Edit
               </EditButton>
               <DeleteButton
-                onClick={() => {
-                  props.deletePurchase(listing._id);
-                  navigation("/profile");
+                onClick={async () => {
+                  await props.deletePurchase(listing._id);
+                  navigation("/profile/manage");
                 }}
               >
                 Delete

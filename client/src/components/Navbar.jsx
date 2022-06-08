@@ -216,9 +216,7 @@ const Navbar = () => {
                     <ProfileName>{user.result.name}</ProfileName>
                     <ListItem>
                       <Person />
-                          <StyledLink to="/profile">
-                            Profile
-                          </StyledLink>
+                      <StyledLink to="/profile">Profile</StyledLink>
                     </ListItem>
                     <ListItem>
                       <Logout />

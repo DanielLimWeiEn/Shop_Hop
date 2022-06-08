@@ -44,7 +44,7 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 70px;
+  gap: 50px;
 `;
 
 const InputAndLabel = styled.div`
@@ -83,9 +83,15 @@ const FormSubmit = styled.button`
   font-size: 20px;
 `;
 
+const ErrorMessage = styled.div`
+  font-size: 15px;
+  color: red;
+  text-align: center;
+`;
+
 const initialState = {
   description: "",
-  price: "",
+  price: "$",
   origin: "",
   itemFile: "",
 };
@@ -94,6 +100,7 @@ const Manage = (props) => {
   const [formData, setFormData] = useState(initialState);
   const [isEdit, setIsEdit] = useState(false);
   const [purchaseId, setPurchaseId] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
   const navigation = useNavigate();
 
   const handleChange = (event) => {
@@ -109,7 +116,7 @@ const Manage = (props) => {
       formData.origin === "" ||
       formData.price === ""
     ) {
-      alert("include all fields");
+      setErrorMessage("Please Include All Fields");
       return;
     }
 
@@ -125,8 +132,9 @@ const Manage = (props) => {
     setFormData(initialState);
     setIsEdit(false);
     setPurchaseId(null);
+    setErrorMessage("");
 
-    navigation("/profile");
+    navigation("/profile/manage");
   };
 
   return (
@@ -155,7 +163,7 @@ const Manage = (props) => {
           </InputAndLabel>
 
           <InputAndLabel>
-            <InputLabel>Price:</InputLabel>
+            <InputLabel>Price ($):</InputLabel>
             <FormInput
               onChange={handleChange}
               id="price"
@@ -184,7 +192,7 @@ const Manage = (props) => {
               }
             />
           </FileInput>
-
+          {errorMessage !== "" && <ErrorMessage>{errorMessage}</ErrorMessage>}
           <FormSubmit type="submit">Submit</FormSubmit>
         </Form>
       </FormHolder>
