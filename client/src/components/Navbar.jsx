@@ -127,11 +127,22 @@ const ListTitle = styled.span`
   padding-left: 10px;
   font-size: 14px;
 `;
+
 const ProfileName = styled.span`
   font-size: 14px;
   padding-left: 10px;
   font-weight: 700;
 `;
+
+const StyledLink = styled(Link)`
+  color: white;
+  text-decoration: none;
+  &:hover {
+    color: black;
+    background-color: white;
+  }
+`;
+
 const linkStyle = {
   textDecoration: "none",
   color: "black",
@@ -205,7 +216,9 @@ const Navbar = () => {
                     <ProfileName>{user.result.name}</ProfileName>
                     <ListItem>
                       <Person />
-                      Profile
+                          <StyledLink to="/profile">
+                            Profile
+                          </StyledLink>
                     </ListItem>
                     <ListItem>
                       <Logout />

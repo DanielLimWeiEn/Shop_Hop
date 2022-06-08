@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { CircularProgress } from "@mui/material";
 
 const Container = styled.div`
   overflow-y: scroll;
