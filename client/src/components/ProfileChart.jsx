@@ -14,43 +14,6 @@ const ChartContainer = styled.div`
   width: 95%;
   height: 85%;
 `;
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    amt: 2400,
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    amt: 2100,
-  },
-];
 
 const ProfileChart = (props) => {
   const pastNMonths = (purchases, n) => {
@@ -63,14 +26,28 @@ const ProfileChart = (props) => {
     return purchasesWithinPastNMonths;
   };
 
+  const pastNDays = (purchases, n) => {
+    const currentDate = new Date();
+    const nDaysAgo = new Date(currentDate.getTime() - n * 24 * 60 * 60 * 1000);
+    const purchasesWithinPastNDays = purchases?.filter((purchase) => {
+      return purchase.purchaseDate > nDaysAgo.toISOString();
+    });
+
+    return purchasesWithinPastNDays;
+  };
+
   const formatDataForDisplay = (purchases) => {
     const dataForDisplay = [
+      {
+        name: "Past Week",
+        "Total Spending": 0,
+      },
       {
         name: "Past Month",
         "Total Spending": 0,
       },
       {
-        name: "Past 6 Months",
+        name: "Past Half",
         "Total Spending": 0,
       },
       {
@@ -83,28 +60,35 @@ const ProfileChart = (props) => {
       },
     ];
 
-    dataForDisplay[0]["Total Spending"] = pastNMonths(purchases, 1)?.reduce(
+    dataForDisplay[0]["Total Spending"] = pastNDays(purchases, 7)?.reduce(
       (accumulator, purchase) => {
         return accumulator + parseFloat(purchase.price.split("$")[1]);
       },
       0
     );
 
-    dataForDisplay[1]["Total Spending"] = pastNMonths(purchases, 6)?.reduce(
+    dataForDisplay[1]["Total Spending"] = pastNMonths(purchases, 1)?.reduce(
       (accumulator, purchase) => {
         return accumulator + parseFloat(purchase.price.split("$")[1]);
       },
       0
     );
 
-    dataForDisplay[2]["Total Spending"] = pastNMonths(purchases, 12)?.reduce(
+    dataForDisplay[2]["Total Spending"] = pastNMonths(purchases, 6)?.reduce(
       (accumulator, purchase) => {
         return accumulator + parseFloat(purchase.price.split("$")[1]);
       },
       0
     );
 
-    dataForDisplay[0]["Total Spending"] = purchases?.reduce(
+    dataForDisplay[3]["Total Spending"] = pastNMonths(purchases, 12)?.reduce(
+      (accumulator, purchase) => {
+        return accumulator + parseFloat(purchase.price.split("$")[1]);
+      },
+      0
+    );
+
+    dataForDisplay[4]["Total Spending"] = purchases?.reduce(
       (accumulator, purchase) => {
         return accumulator + parseFloat(purchase.price.split("$")[1]);
       },

@@ -180,6 +180,7 @@ const Navbar = () => {
 
     setUser(JSON.parse(localStorage.getItem("profile")));
     setItems(JSON.parse(localStorage.getItem("items")));
+    // eslint-disable-next-line
   }, [location, user?.token, items]);
 
   return (
