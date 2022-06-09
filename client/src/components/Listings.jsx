@@ -77,9 +77,14 @@ const ImageLoad = styled.img`
 `;
 
 const Button = styled.div`
-  background-color:  #944dff;
+  background-color: #944dff;
   border-radius: 5px;
   text-align:center;
+`;
+
+const CartAdd = styled.button`
+  background-color: #944dff;
+  border-radius: 5px;
 `;
 
 const Listings = (props) => {
@@ -98,7 +103,7 @@ const Listings = (props) => {
               <Description>
                 <ItemInfo>{listing.name}</ItemInfo>
               </Description>
-              <button value={listing.val} onClick={props.onAdd}>Add to Cart</button>
+              <Button value={listing.val} onClick={props.onAdd}>Add to Cart</Button>
               <PriceInfo>
                 <Logo src={listing.logo} />
                 <Price>{listing.price}</Price>
