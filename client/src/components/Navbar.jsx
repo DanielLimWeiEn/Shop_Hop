@@ -180,7 +180,7 @@ const Navbar = () => {
     }
 
     setUser(JSON.parse(localStorage.getItem("profile")));
-    setItems(JSON.parse(localStorage.getItem('cart')));
+    setItems(JSON.parse(localStorage.getItem("cart")));
     setBadgeNumber(items?.reduce((x, y) => x + y.quantity, 0));
     // eslint-disable-next-line
   }, [location, user?.token]);
@@ -245,10 +245,7 @@ const Navbar = () => {
           {user?.result && (
             <MenuItem>
               <Link to="/cart" style={linkStyle}>
-                <Badge
-                  badgeContent={badgeNumber}
-                  color="secondary"
-                >
+                <Badge badgeContent={badgeNumber} color="secondary">
                   <ShoppingCartOutlinedIcon />
                 </Badge>
               </Link>

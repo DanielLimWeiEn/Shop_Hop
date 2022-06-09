@@ -70,7 +70,9 @@ const CartProduct = (props) => {
           <ProductAmount>{props.item.quantity}</ProductAmount>
           <Remove value={props.item.val} onClick={props.minusOne} />
         </ProductAmountContainer>
-        <ProductPrice>$ {parseFloat(props.item.price.split("$")[1]) * props.item.quantity}</ProductPrice>
+        <ProductPrice>
+          $ {parseFloat(props.item.price.split("$")[1]) * props.item.quantity}
+        </ProductPrice>
       </PriceDetail>
     </Product>
   );

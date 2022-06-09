@@ -34,7 +34,7 @@ const FilterBar = (props) => {
         <Select
           onChange={updateOrder}
           defaultValue="Relevance"
-          style={{ fontSize: 14, backgroundColor: "white"}}
+          style={{ fontSize: 14, backgroundColor: "white" }}
         >
           <MenuItem value={"Relevance"}>Relevance</MenuItem>
           <MenuItem value={"Ascending"}>Price (Low to High)</MenuItem>

@@ -98,7 +98,7 @@ const History = (props) => {
       <Top>
         <Summary>
           <ItemHeading>Overview</ItemHeading>
-          <ProfileChart purchases={props.purchases.data?.purchases}/>
+          <ProfileChart purchases={props.purchases.data?.purchases} />
         </Summary>
         <Spending>
           <ItemHeading>Summary</ItemHeading>

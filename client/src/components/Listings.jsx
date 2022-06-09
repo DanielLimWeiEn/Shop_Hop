@@ -22,7 +22,7 @@ const Image = styled.img`
 
 const Description = styled.div`
   display: flex;
-  align-items:center;
+  align-items: center;
   width: min(90%, 1200px);
   height: 100px;
   margin-left: 20px;
@@ -30,8 +30,8 @@ const Description = styled.div`
 
 const ItemInfo = styled.span`
   font-size: 20px;
-  font-weight:600;
-  
+  font-weight: 600;
+
   word-wrap: break-word;
   text-overflow: ellipsis;
 `;
@@ -55,11 +55,11 @@ const Price = styled.span`
 `;
 
 const StoreBtn = styled.a`
-  text-decoration: none; 
+  text-decoration: none;
   color: #66ff66;
   font-size: 16px;
   font-weight: 600;
-  padding: 5px; 
+  padding: 5px;
 `;
 
 const Box = styled.div`
@@ -72,19 +72,14 @@ const Box = styled.div`
 `;
 
 const ImageLoad = styled.img`
-   height: 400px;
-   width:500px;
+  height: 400px;
+  width: 500px;
 `;
 
 const Button = styled.div`
   background-color: #944dff;
   border-radius: 5px;
-  text-align:center;
-`;
-
-const CartAdd = styled.button`
-  background-color: #944dff;
-  border-radius: 5px;
+  text-align: center;
 `;
 
 const Listings = (props) => {
@@ -93,7 +88,7 @@ const Listings = (props) => {
       {props.isSearching ? (
         <Box>
           <h1>Web-Scraping in progress...</h1>
-          <ImageLoad src="https://i.pinimg.com/originals/66/22/ab/6622ab37c6db6ac166dfec760a2f2939.gif"/>
+          <ImageLoad src="https://i.pinimg.com/originals/66/22/ab/6622ab37c6db6ac166dfec760a2f2939.gif" />
         </Box>
       ) : (
         props.listings.map((listing) => {
@@ -103,11 +98,15 @@ const Listings = (props) => {
               <Description>
                 <ItemInfo>{listing.name}</ItemInfo>
               </Description>
-              <Button value={listing.val} onClick={props.onAdd}>Add to Cart</Button>
+              <Button value={listing.val} onClick={props.onAdd}>
+                Add to Cart
+              </Button>
               <PriceInfo>
                 <Logo src={listing.logo} />
                 <Price>{listing.price}</Price>
-                <Button><StoreBtn href={listing.link}>Go to Store</StoreBtn></Button>
+                <Button>
+                  <StoreBtn href={listing.link}>Go to Store</StoreBtn>
+                </Button>
               </PriceInfo>
             </ItemBox>
           );

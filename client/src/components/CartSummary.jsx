@@ -40,7 +40,11 @@ const CartSummary = (props) => {
       <SummaryItem>
         <SummaryItemText>Subtotal</SummaryItemText>
         <SummaryItemPrice>
-          $ {props.items.reduce((x, y) => x + y.quantity * parseFloat(y.price.split("$")[1]), 0)}
+          ${" "}
+          {props.items.reduce(
+            (x, y) => x + y.quantity * parseFloat(y.price.split("$")[1]),
+            0
+          )}
         </SummaryItemPrice>
       </SummaryItem>
       <SummaryItem>
@@ -54,7 +58,11 @@ const CartSummary = (props) => {
       <SummaryItem type="total">
         <SummaryItemText>Total</SummaryItemText>
         <SummaryItemPrice>
-          $ {props.items.reduce((x, y) => x + y.quantity * parseFloat(y.price.split("$")[1]), 0)}
+          ${" "}
+          {props.items.reduce(
+            (x, y) => x + y.quantity * parseFloat(y.price.split("$")[1]),
+            0
+          )}
         </SummaryItemPrice>
       </SummaryItem>
       <Button>CHECKOUT NOW</Button>

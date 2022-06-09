@@ -152,7 +152,7 @@ const Manage = (props) => {
         />
       </ItemHolder>
       <FormHolder>
-        <ItemHeading>CRUD</ItemHeading>
+        <ItemHeading>Add/Edit Purchase</ItemHeading>
         <Form onSubmit={handleSubmit}>
           <InputAndLabel>
             <InputLabel>Description:</InputLabel>
