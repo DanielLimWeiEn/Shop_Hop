@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import SearchEngine from "../components/SearchEngine";
 import FilterBar from "../components/FilterBar";
@@ -21,6 +22,7 @@ const Searching = () => {
   const [cartItems, setCartItems] = useState(
     JSON.parse(localStorage.getItem("cart"))
   );
+  const navigation = useNavigate();
 
   const onAdd = (event) => {
     const cartItem = {
@@ -42,8 +44,8 @@ const Searching = () => {
     } else {
       setCartItems([...cartItems, cartItem]);
     }
-    console.log(cartItems);
     localStorage.setItem("cart", JSON.stringify(cartItems));
+    navigation("/shopping")
   };
 
   useEffect(() => {

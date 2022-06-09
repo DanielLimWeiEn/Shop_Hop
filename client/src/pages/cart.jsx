@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import CartProduct from "../components/CartProducts";
@@ -50,6 +51,7 @@ const Cart = () => {
   const [items, setItems] = useState(
     JSON.parse(localStorage.getItem("cart"))
   );
+  const navigation = useNavigate();
 
   const addOne = (event) => {
     setItems(
@@ -63,6 +65,7 @@ const Cart = () => {
     );
 
     localStorage.setItem("cart", JSON.stringify(items));
+    navigation("/cart");
   };
 
   const minusOne = (event) => {
@@ -77,13 +80,20 @@ const Cart = () => {
           }
 
           return x;
-        })
-        .filter((x) => x.quantity >= 1)
+        }).filter((x) => x.quantity >= 1)
     );
 
     localStorage.setItem("cart", JSON.stringify(items));
+    navigation("/cart");
   };
 
+  useEffect(() => {
+    const updateStorage = () => {
+      localStorage.setItem("cart", JSON.stringify(items));
+    };
+
+    updateStorage();
+  }, [items]);
 
   return (
     <Container>
