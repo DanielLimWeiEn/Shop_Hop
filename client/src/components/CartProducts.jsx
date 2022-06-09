@@ -60,17 +60,17 @@ const CartProduct = (props) => {
             <b>Product:</b> {props.item.name}
           </ProductName>
           <ProductId>
-            <b>ID:</b> {props.item.id}{" "}
+            <b>ID:</b> {props.item.val}{" "}
           </ProductId>
         </Details>
       </ProductDetail>
       <PriceDetail>
         <ProductAmountContainer>
-          <Add value={props.item.id} onClick={props.addOne} />
+          <Add value={props.item.val} onClick={props.addOne} />
           <ProductAmount>{props.item.quantity}</ProductAmount>
-          <Remove value={props.item.id} onClick={props.minusOne} />
+          <Remove value={props.item.val} onClick={props.minusOne} />
         </ProductAmountContainer>
-        <ProductPrice>$ {props.item.price * props.item.quantity}</ProductPrice>
+        <ProductPrice>$ {parseFloat(props.item.price.split("$")[1]) * props.item.quantity}</ProductPrice>
       </PriceDetail>
     </Product>
   );

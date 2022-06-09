@@ -6,6 +6,7 @@ const Summary = styled.div`
   border-radius: 10px;
   padding: 20px;
   height: 50vh;
+  width: 100%;
 `;
 
 const SummaryTitle = styled.h1`
@@ -39,7 +40,7 @@ const CartSummary = (props) => {
       <SummaryItem>
         <SummaryItemText>Subtotal</SummaryItemText>
         <SummaryItemPrice>
-          $ {props.items.reduce((x, y) => x + y.quantity * y.price, 0)}
+          $ {props.items.reduce((x, y) => x + y.quantity * parseFloat(y.price.split("$")[1]), 0)}
         </SummaryItemPrice>
       </SummaryItem>
       <SummaryItem>
@@ -53,7 +54,7 @@ const CartSummary = (props) => {
       <SummaryItem type="total">
         <SummaryItemText>Total</SummaryItemText>
         <SummaryItemPrice>
-          $ {props.items.reduce((x, y) => x + y.quantity * y.price, 0)}
+          $ {props.items.reduce((x, y) => x + y.quantity * parseFloat(y.price.split("$")[1]), 0)}
         </SummaryItemPrice>
       </SummaryItem>
       <Button>CHECKOUT NOW</Button>

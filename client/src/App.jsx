@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import Announcement from "./components/Announcement";
 import Navbar from "./components/Navbar";
 import Search from "./pages/Search";
-import Cart from "./pages/cart";
+import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 
 const App = () => {

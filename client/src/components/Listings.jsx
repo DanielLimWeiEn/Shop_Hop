@@ -98,6 +98,7 @@ const Listings = (props) => {
               <Description>
                 <ItemInfo>{listing.name}</ItemInfo>
               </Description>
+              <button value={listing.val} onClick={props.onAdd}>Add to Cart</button>
               <PriceInfo>
                 <Logo src={listing.logo} />
                 <Price>{listing.price}</Price>

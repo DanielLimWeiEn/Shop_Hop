@@ -18,34 +18,32 @@ const Searching = () => {
   const [listings, setListings] = useState([]);
   const [order, setOrder] = useState("Relevance");
   const [isSearching, setIsSearching] = useState(false);
+  const [cartItems, setCartItems] = useState(
+    JSON.parse(localStorage.getItem("cart"))
+  );
 
   const onAdd = (event) => {
-    const item = {
-      ...listings.find((x) => x.id === parseInt(event.target.value)),
+    const cartItem = {
+      ...listings.find(
+        (listing) => listing.val === parseInt(event.target.getAttribute("value"))
+      ),
       quantity: 1,
     };
-    if (JSON.parse(localStorage.getItem("items")) === null) {
-      localStorage.setItem("items", "[]");
-    }
 
-    const contains = JSON.parse(localStorage.getItem("items")).find(
-      (x) => x.id === item.id
-    );
+    const contains = cartItems.find((x) => x.val === cartItem.val);
     if (contains) {
-      localStorage.setItem(
-        "items",
-        JSON.stringify(
-          JSON.parse(localStorage.getItem("items")).map((x) =>
-            x.id === item.id ? { ...x, quantity: x.quantity + 1 } : x
-          )
-        )
+      setCartItems(
+        cartItems.map((item) => {
+          return item.val === cartItem.val
+            ? { ...item, quantity: item.quantity + 1 }
+            : item;
+        })
       );
     } else {
-      localStorage.setItem(
-        "items",
-        JSON.stringify([...JSON.parse(localStorage.getItem("items")), item])
-      );
+      setCartItems([...cartItems, cartItem]);
     }
+    console.log(cartItems);
+    localStorage.setItem("cart", JSON.stringify(cartItems));
   };
 
   useEffect(() => {

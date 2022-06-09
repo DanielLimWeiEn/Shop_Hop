@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 import CartProduct from "../components/CartProducts";
 import CartSummary from "../components/CartSummary";
 
-const Container = styled.div``;
+const Container = styled.div`
+  height: 100vh;
+  width: 100vw;
+`;
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -38,18 +41,20 @@ const Bottom = styled.div`
 `;
 
 const Info = styled.div`
-  flex: 3;
+  width: 100%;
+  height: 75vh;
+  overflow-y: scroll;
 `;
 
 const Cart = () => {
   const [items, setItems] = useState(
-    JSON.parse(localStorage.getItem("items") || "[]")
+    JSON.parse(localStorage.getItem("cart"))
   );
 
   const addOne = (event) => {
     setItems(
       items.map((x) => {
-        if (x.id === parseInt(event.nativeEvent.target.getAttribute("value"))) {
+        if (x.val === parseInt(event.nativeEvent.target.getAttribute("value"))) {
           x.quantity = x.quantity + 1;
         }
 
@@ -57,15 +62,14 @@ const Cart = () => {
       })
     );
 
-    localStorage.setItem("items", JSON.stringify(items));
+    localStorage.setItem("cart", JSON.stringify(items));
   };
 
   const minusOne = (event) => {
     setItems(
-      items
-        .map((x) => {
+      items.map((x) => {
           if (
-            x.id === parseInt(event.nativeEvent.target.getAttribute("value"))
+            x.val === parseInt(event.nativeEvent.target.getAttribute("value"))
           ) {
             if (x.quantity >= 1) {
               x.quantity--;
@@ -76,11 +80,10 @@ const Cart = () => {
         })
         .filter((x) => x.quantity >= 1)
     );
+
+    localStorage.setItem("cart", JSON.stringify(items));
   };
 
-  useEffect(() => {
-    localStorage.setItem("items", JSON.stringify(items));
-  }, [items]);
 
   return (
     <Container>
