@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import ProfilePurchaseListing from "./ProfilePurchaseListing";
+import ProfileChart from "./ProfileChart";
 
 const Container = styled.div`
   box-sizing: border-box;
@@ -96,7 +97,8 @@ const History = (props) => {
     <Container>
       <Top>
         <Summary>
-          <ItemHeading>Chart</ItemHeading>
+          <ItemHeading>Overview</ItemHeading>
+          <ProfileChart purchases={props.purchases.data?.purchases}/>
         </Summary>
         <Spending>
           <ItemHeading>Summary</ItemHeading>
