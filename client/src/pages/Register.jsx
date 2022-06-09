@@ -89,6 +89,7 @@ const Register = () => {
     try {
       const action = await signUp(formData);
 
+      localStorage.setItem("cart", "[]");
       localStorage.setItem("profile", JSON.stringify({ ...action?.data }));
       setErrorMessage(null);
       navigate("/");

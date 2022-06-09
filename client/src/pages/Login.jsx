@@ -111,6 +111,7 @@ const Login = () => {
     try {
       const action = await signIn(formData);
 
+      localStorage.setItem("cart", "[]");
       localStorage.setItem("profile", JSON.stringify({ ...action?.data }));
       setErrorMessage(null);
       navigate("/");
