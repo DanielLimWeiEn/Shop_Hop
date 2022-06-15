@@ -1,10 +1,11 @@
 import express from "express";
 import { getPayments, payPayments } from '../controllers/payments.js';
+import auth from '../middleware/auth.js';
 
 const router = express.Router();
 
-router.get('/', getPayments);
+router.get('/', auth, getPayments);
 
-router.post('/pay', payPayments);
+router.post('/pay', auth, payPayments);
 
 export default router;
