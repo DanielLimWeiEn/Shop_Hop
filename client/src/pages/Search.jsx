@@ -27,7 +27,8 @@ const Searching = () => {
   const onAdd = (event) => {
     const cartItem = {
       ...listings.find(
-        (listing) => listing.val === parseInt(event.target.getAttribute("value"))
+        (listing) =>
+          listing.val === parseInt(event.target.getAttribute("value"))
       ),
       quantity: 1,
     };
@@ -45,7 +46,7 @@ const Searching = () => {
       setCartItems([...cartItems, cartItem]);
     }
     localStorage.setItem("cart", JSON.stringify(cartItems));
-    navigation("/shopping")
+    navigation("/shopping");
   };
 
   useEffect(() => {

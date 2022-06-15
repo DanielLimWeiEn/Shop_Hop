@@ -48,15 +48,15 @@ const Info = styled.div`
 `;
 
 const Cart = () => {
-  const [items, setItems] = useState(
-    JSON.parse(localStorage.getItem("cart"))
-  );
+  const [items, setItems] = useState(JSON.parse(localStorage.getItem("cart")));
   const navigation = useNavigate();
 
   const addOne = (event) => {
     setItems(
       items.map((x) => {
-        if (x.val === parseInt(event.nativeEvent.target.getAttribute("value"))) {
+        if (
+          x.val === parseInt(event.nativeEvent.target.getAttribute("value"))
+        ) {
           x.quantity = x.quantity + 1;
         }
 
@@ -70,7 +70,8 @@ const Cart = () => {
 
   const minusOne = (event) => {
     setItems(
-      items.map((x) => {
+      items
+        .map((x) => {
           if (
             x.val === parseInt(event.nativeEvent.target.getAttribute("value"))
           ) {
@@ -80,7 +81,8 @@ const Cart = () => {
           }
 
           return x;
-        }).filter((x) => x.quantity >= 1)
+        })
+        .filter((x) => x.quantity >= 1)
     );
 
     localStorage.setItem("cart", JSON.stringify(items));
