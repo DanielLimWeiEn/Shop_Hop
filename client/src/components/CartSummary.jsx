@@ -1,4 +1,8 @@
 import styled from "styled-components";
+import StripeCheckout from "react-stripe-checkout";
+import { useState, useEffect } from "react";
+
+import { payPayment } from "../api/index";
 
 const Summary = styled.div`
   flex: 1;
@@ -34,6 +38,33 @@ const Button = styled.button`
 `;
 
 const CartSummary = (props) => {
+  const [stripeToken, setStripeToken] = useState(null);
+
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await payPayment(
+          stripeToken,
+          props.items.reduce(
+            (x, y) => x + y.quantity * parseFloat(y.price.split("$")[1]),
+            0
+          ) * 100
+        );
+        console.log(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    stripeToken && makeRequest();
+    setStripeToken(null);
+    // eslint-disable-next-line
+  }, [stripeToken]);
+
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
+
   return (
     <Summary>
       <SummaryTitle>ORDER SUMMARY</SummaryTitle>
@@ -65,7 +96,25 @@ const CartSummary = (props) => {
           )}
         </SummaryItemPrice>
       </SummaryItem>
-      <Button>CHECKOUT NOW</Button>
+      <StripeCheckout
+        name="ShopHop"
+        stripeKey="pk_test_51LAlVKHrTVn3XrgZLR6vvc2UlHd8NoMpBNtDwHRi6FQSgS4t0AC4nZF6vkDZiGiBrXJuhReGydG7TH1GA1EptVSD00ILgrAEGt"
+        billingAddress
+        shippingAddress
+        description={`You are paying ${props.items.reduce(
+          (x, y) => x + y.quantity * parseFloat(y.price.split("$")[1]),
+          0
+        )}`}
+        amount={
+          props.items.reduce(
+            (x, y) => x + y.quantity * parseFloat(y.price.split("$")[1]),
+            0
+          ) * 100
+        }
+        token={onToken}
+      >
+        <Button>Buy Now</Button>
+      </StripeCheckout>
     </Summary>
   );
 };

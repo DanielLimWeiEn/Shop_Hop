@@ -26,3 +26,5 @@ export const showPurchases = () => API.get("/profile/manage");
 export const addPurchase = (formData) => API.post("/profile/manage", formData);
 export const updatePurchase = (id, formData) => API.put(`/profile/manage/${id}`, formData);
 export const deletePurchase = (id) => API.delete(`/profile/manage/${id}`);
+
+export const payPayment = (token, totalAmount) => API.post('/payment/pay', { tokenId: token.id, amount: totalAmount });
