@@ -1,5 +1,4 @@
 import Stripe from 'stripe';
-import { v4 as uuidv4 } from 'uuid';
 
 const stripe = new Stripe("sk_test_51LAlVKHrTVn3XrgZ09MIkdiCrL4zZ2kHrWZe5mKQF90V327xGUGOIWUhkY061HaEnf8Tusm3dRpmxDZ04TMCwo73003o0Zr8N1");
 

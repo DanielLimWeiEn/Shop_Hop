@@ -117,7 +117,7 @@ const Cart = () => {
               );
             })}
           </Info>
-          <CartSummary items={items} />
+          <CartSummary items={items} setItems={setItems} />
         </Bottom>
       </Wrapper>
     </Container>
