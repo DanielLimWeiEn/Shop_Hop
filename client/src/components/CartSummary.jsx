@@ -48,7 +48,22 @@ const CartSummary = (props) => {
           props.items.reduce(
             (x, y) => x + y.quantity * parseFloat(y.price.split("$")[1]),
             0
-          ) * 100
+          ) * 100,
+          props.items.flatMap((currentItem) => {
+            let cur = [];
+            for (let i = 0; i < currentItem.quantity; i++) {
+              cur.push({
+                description: currentItem.name,
+                price: `$${
+                  parseFloat(currentItem.price.split("$")[1]) /
+                  currentItem.quantity
+                }`,
+                origin: "ShopHop",
+                itemFile: currentItem.image,
+              });
+            }
+            return cur;
+          })
         );
         console.log(res.data);
         setStripeToken(null);
