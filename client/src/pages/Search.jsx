@@ -30,17 +30,15 @@ const Searching = () => {
       quantity: 1,
     };
 
-    console.log(cartItem);
-
     const contains = cartItems.find((x) => x.val === cartItem.val);
     if (contains) {
-      setCartItems(
-        cartItems.map((item) => {
+      setCartItems([
+        ...cartItems.map((item) => {
           return item.val === cartItem.val
             ? { ...item, quantity: item.quantity + 1 }
             : item;
-        })
-      );
+        }),
+      ]);
     } else {
       setCartItems([...cartItems, cartItem]);
     }
