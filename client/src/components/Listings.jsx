@@ -153,7 +153,7 @@ const LoadingBox = styled.div`
 const LoadingImage = styled.img`
   height: 300px;
   width: 450px;
-`
+`;
 
 const Listings = (props) => {
   return (
@@ -161,7 +161,7 @@ const Listings = (props) => {
       {props.isSearching ? (
         <LoadingBox>
           <h1>Web-Scraping in progress...</h1>
-          <LoadingImage src="https://flevix.com/wp-content/uploads/2019/07/Curve-Loading.gif"/>
+          <LoadingImage src="https://flevix.com/wp-content/uploads/2019/07/Curve-Loading.gif" />
         </LoadingBox>
       ) : (
         props.listings.map((listing) => {

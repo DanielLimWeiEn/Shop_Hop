@@ -241,7 +241,12 @@ const Navbar = () => {
           {user?.result && (
             <MenuItem>
               <Link to="/cart" style={linkStyle}>
-                <Badge badgeContent={JSON.parse(localStorage.getItem("cart"))?.reduce((x, y) => x + y.quantity, 0)} color="secondary">
+                <Badge
+                  badgeContent={JSON.parse(
+                    localStorage.getItem("cart")
+                  )?.reduce((x, y) => x + y.quantity, 0)}
+                  color="secondary"
+                >
                   <ShoppingCartOutlinedIcon />
                 </Badge>
               </Link>
