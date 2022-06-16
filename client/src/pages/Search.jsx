@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import SearchEngine from "../components/SearchEngine";
@@ -18,7 +18,6 @@ const Container = styled.div`
 
 const Searching = () => {
   const [listings, setListings] = useState([]);
-  const [order, setOrder] = useState("Relevance");
   const [isSearching, setIsSearching] = useState(false);
   const [cartItems, setCartItems] = useState(
     JSON.parse(localStorage.getItem("cart"))
@@ -27,10 +26,7 @@ const Searching = () => {
 
   const onAdd = (value) => {
     const cartItem = {
-      ...listings.find(
-        (listing) =>
-          listing.val === parseInt(value)
-      ),
+      ...listings.find((listing) => listing.val === parseInt(value)),
       quantity: 1,
     };
 
@@ -52,37 +48,33 @@ const Searching = () => {
     navigation("/shopping");
   };
 
-  useEffect(() => {
-    const orderValues = async () => {
-      const regex = /[0-9]*\.[0-9]*/;
-      if (order === "Relevance") {
-        setListings(listings.sort());
-      } else if (order === "Descending") {
-        setListings(
-          listings.sort(
-            (a, b) =>
-              parseFloat(a.price.match(regex)[0]) -
-              parseFloat(b.price.match(regex)[0])
-          )
-        );
-      } else if (order === "Ascending") {
-        setListings(
-          listings.sort(
-            (a, b) =>
-              parseFloat(b.price.match(regex)[0]) -
-              parseFloat(a.price.match(regex)[0])
-          )
-        );
-      }
-    };
-
-    (async () => await orderValues())();
-  }, [order, listings]);
+  const orderValues = (order) => {
+    const regex = /[0-9]*\.[0-9]*/;
+    if (order === "Relevance") {
+      setListings([...listings.sort()]);
+    } else if (order === "Ascending") {
+      setListings([
+        ...listings.sort(
+          (a, b) =>
+            parseFloat(a.price.match(regex)[0]) -
+            parseFloat(b.price.match(regex)[0])
+        ),
+      ]);
+    } else if (order === "Descending") {
+      setListings([
+        ...listings.sort(
+          (a, b) =>
+            parseFloat(b.price.match(regex)[0]) -
+            parseFloat(a.price.match(regex)[0])
+        ),
+      ]);
+    }
+  };
 
   return (
     <Container>
       <SearchEngine setListings={setListings} setIsSearching={setIsSearching} />
-      <FilterBar setOrder={setOrder} listings={listings} />
+      <FilterBar listings={listings} orderValues={orderValues} />
       <Listings listings={listings} isSearching={isSearching} onAdd={onAdd} />
     </Container>
   );

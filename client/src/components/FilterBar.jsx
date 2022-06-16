@@ -22,7 +22,7 @@ const ProductsNo = styled.span`
 
 const FilterBar = (props) => {
   const updateOrder = (event) => {
-    props.setOrder(event.target.value);
+    props.orderValues(event.target.value);
   };
 
   return (
