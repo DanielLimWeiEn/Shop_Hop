@@ -5,29 +5,37 @@ import { useState } from "react";
 import { generateShopping } from "../api";
 
 const Container = styled.form`
-  height: 50px;
+  height: 6%;
+  width: 80%;
   border: 1px solid;
   display: flex;
+  border-radius: 12px;
 `;
 
 const SearchBar = styled.input`
+  box-sizing: border-box;
   border: none;
   font-size: 16px;
-  width: 500px;
+  width: 100%;
+  padding-left: 20px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 `;
 
 const Button = styled.button`
+  transition: 0.3s;
   display: flex;
-  background-color: #ccccff;
   border: none;
+  background-color: transparent;
   align-items: center;
   border-left: 1px solid;
   cursor: pointer;
   padding: 20px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 
   &:hover {
-    background-color: #b3b3ff;
-    color: black;
+    transform: scale(1.09);
   }
 `;
 const initialState = {
@@ -63,8 +71,7 @@ const SearchEngine = (props) => {
     <Container onSubmit={handleSubmit}>
       <SearchBar onChange={handleChange} name="query" />
       <Button type="submit">
-        <Search style={{ color: "black", fontSize: 16 }} />
-        Search
+        <Search style={{ color: "black", fontSize: 32 }} />
       </Button>
     </Container>
   );

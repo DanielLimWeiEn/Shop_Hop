@@ -7,12 +7,13 @@ import FilterBar from "../components/FilterBar";
 import Listings from "../components/Listings";
 
 const Container = styled.div`
+  box-size: border-box;
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  padding-top: 20px;
 `;
 
 const Searching = () => {
@@ -24,14 +25,16 @@ const Searching = () => {
   );
   const navigation = useNavigate();
 
-  const onAdd = (event) => {
+  const onAdd = (value) => {
     const cartItem = {
       ...listings.find(
         (listing) =>
-          listing.val === parseInt(event.target.getAttribute("value"))
+          listing.val === parseInt(value)
       ),
       quantity: 1,
     };
+
+    console.log(cartItem);
 
     const contains = cartItems.find((x) => x.val === cartItem.val);
     if (contains) {
