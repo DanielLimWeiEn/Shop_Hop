@@ -156,8 +156,6 @@ const diffLink = {
 
 const Navbar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  const [items, setItems] = useState(JSON.parse(localStorage.getItem("cart")));
-  const [badgeNumber, setBadgeNumber] = useState(0);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -180,8 +178,6 @@ const Navbar = () => {
     }
 
     setUser(JSON.parse(localStorage.getItem("profile")));
-    setItems(JSON.parse(localStorage.getItem("cart")));
-    setBadgeNumber(items?.reduce((x, y) => x + y.quantity, 0));
     // eslint-disable-next-line
   }, [location, user?.token]);
 
@@ -245,7 +241,12 @@ const Navbar = () => {
           {user?.result && (
             <MenuItem>
               <Link to="/cart" style={linkStyle}>
-                <Badge badgeContent={badgeNumber} color="secondary">
+                <Badge
+                  badgeContent={JSON.parse(
+                    localStorage.getItem("cart")
+                  )?.reduce((x, y) => x + y.quantity, 0)}
+                  color="secondary"
+                >
                   <ShoppingCartOutlinedIcon />
                 </Badge>
               </Link>

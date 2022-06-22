@@ -2,27 +2,27 @@ import styled from "styled-components";
 import { MenuItem, Select } from "@mui/material";
 
 const Container = styled.div`
-  height: 30px;
+  box-sizing: border-box;
+  height: 10%;
   padding: 20px;
-  width: min(90%, 1500px);
+  width: min(98%, 1500px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ccb3ff;
-  border-radius: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
 `;
 
 const Left = styled.div``;
 
 const Right = styled.div``;
+
 const ProductsNo = styled.span`
   font-size: 18px;
 `;
 
 const FilterBar = (props) => {
   const updateOrder = (event) => {
-    props.setOrder(event.target.value);
+    props.orderValues(event.target.value);
   };
 
   return (
@@ -34,7 +34,7 @@ const FilterBar = (props) => {
         <Select
           onChange={updateOrder}
           defaultValue="Relevance"
-          style={{ fontSize: 14, backgroundColor: "white" }}
+          style={{ fontSize: 18, backgroundColor: "white" }}
         >
           <MenuItem value={"Relevance"}>Relevance</MenuItem>
           <MenuItem value={"Ascending"}>Price (Low to High)</MenuItem>
