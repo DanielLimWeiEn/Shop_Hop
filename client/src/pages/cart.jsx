@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
 
 import CartProduct from "../components/CartProducts";
@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h1`
-  font-weight: 300;
+  font-weight: 300; 
   text-align: center;
 `;
 
@@ -46,6 +46,12 @@ const Info = styled.div`
   height: 75vh;
   overflow-y: scroll;
 `;
+
+const diffLink = {
+  textDecoration: "none",
+  fontWeight: 600,
+  color: "black",
+};
 
 const Cart = () => {
   const [items, setItems] = useState(JSON.parse(localStorage.getItem("cart")));
@@ -102,7 +108,7 @@ const Cart = () => {
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
+          <TopButton><Link to="/shopping" style={diffLink}>CONTINUE SHOPPING</Link></TopButton>
           <TopButton type="filled">CHECKOUT NOW</TopButton>
         </Top>
         <Bottom>
