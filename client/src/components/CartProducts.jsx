@@ -51,13 +51,12 @@ const PriceDetail = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: blue;
+  gap: 20px;
 `;
 
 const ProductAmountContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
 `;
 
 const ProductAmount = styled.div`
@@ -91,7 +90,10 @@ const CartProduct = (props) => {
           <Remove value={props.item.val} onClick={props.minusOne} />
         </ProductAmountContainer>
         <ProductPrice>
-          $ {parseFloat(props.item.price.split("$")[1]) * props.item.quantity}
+          ${" "}
+          {(
+            parseFloat(props.item.price.split("$")[1]) * props.item.quantity
+          ).toFixed(2)}
         </ProductPrice>
       </PriceDetail>
     </Product>

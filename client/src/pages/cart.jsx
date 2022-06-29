@@ -35,7 +35,9 @@ const TopButton = styled.button`
 `;
 
 const Bottom = styled.div`
+  box-sizing: border-box;
   display: flex;
+  gap: 20px;
   justify-content: space-between;
 `;
 
