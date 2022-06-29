@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.27.2",
     "chart.js": "^3.8.0",
+    "cypress-plugin-stripe-elements": "^1.0.2",
     "cypress-real-events": "^1.7.1",
     "jwt-decode": "^3.1.2",
     "react": "^17.0.2",

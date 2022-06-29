@@ -4431,6 +4431,11 @@
   "resolved" "https://registry.npmjs.org/cyclist/-/cyclist-1.0.1.tgz"
   "version" "1.0.1"
 
+"cypress-plugin-stripe-elements@^1.0.2":
+  "integrity" "sha512-tNXZ9BHooO8IGGmOpVRhNfGde/vmPY4D56pi4VHw1EWbfSuwCoveeqqjKDeRfPzMTD5gGYGwXdX2qO1S9O9GEg=="
+  "resolved" "https://registry.npmjs.org/cypress-plugin-stripe-elements/-/cypress-plugin-stripe-elements-1.0.2.tgz"
+  "version" "1.0.2"
+
 "cypress-real-events@^1.7.1":
   "integrity" "sha512-/Bg15RgJ0SYsuXc6lPqH08x19z6j2vmhWN4wXfJqm3z8BTAFiK2MvipZPzxT8Z0jJP0q7kuniWrLIvz/i/8lCQ=="
   "resolved" "https://registry.npmjs.org/cypress-real-events/-/cypress-real-events-1.7.1.tgz"
