@@ -5,11 +5,10 @@ import { useState, useEffect } from "react";
 import { payPayment } from "../api/index";
 
 const Summary = styled.div`
-  flex: 1;
+  box-sizing: border-box;
   border: 0.5px solid lightgray;
   border-radius: 10px;
   padding: 20px;
-  height: 50vh;
   width: 100%;
 `;
 
@@ -25,9 +24,16 @@ const SummaryItem = styled.div`
   font-size: ${(props) => props.type === "total" && "24px"};
 `;
 
-const SummaryItemText = styled.span``;
+const SummaryItemText = styled.span`
+  width: 50%;
+`;
 
-const SummaryItemPrice = styled.span``;
+const SummaryItemPrice = styled.span`
+  width: 40%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
 
 const Button = styled.button`
   width: 100%;
@@ -88,10 +94,12 @@ const CartSummary = (props) => {
         <SummaryItemText>Subtotal</SummaryItemText>
         <SummaryItemPrice>
           ${" "}
-          {props.items.reduce(
-            (x, y) => x + y.quantity * parseFloat(y.price.split("$")[1]),
-            0
-          )}
+          {props.items
+            .reduce(
+              (x, y) => x + y.quantity * parseFloat(y.price.split("$")[1]),
+              0
+            )
+            .toFixed(2)}
         </SummaryItemPrice>
       </SummaryItem>
       <SummaryItem>
@@ -106,10 +114,12 @@ const CartSummary = (props) => {
         <SummaryItemText>Total</SummaryItemText>
         <SummaryItemPrice>
           ${" "}
-          {props.items.reduce(
-            (x, y) => x + y.quantity * parseFloat(y.price.split("$")[1]),
-            0
-          )}
+          {props.items
+            .reduce(
+              (x, y) => x + y.quantity * parseFloat(y.price.split("$")[1]),
+              0
+            )
+            .toFixed(2)}
         </SummaryItemPrice>
       </SummaryItem>
       <StripeCheckout
@@ -117,15 +127,19 @@ const CartSummary = (props) => {
         stripeKey="pk_test_51LAlVKHrTVn3XrgZLR6vvc2UlHd8NoMpBNtDwHRi6FQSgS4t0AC4nZF6vkDZiGiBrXJuhReGydG7TH1GA1EptVSD00ILgrAEGt"
         billingAddress
         shippingAddress
-        description={`You are paying $${props.items.reduce(
-          (x, y) => x + y.quantity * parseFloat(y.price.split("$")[1]),
-          0
-        )}`}
-        amount={
-          props.items.reduce(
+        description={`You are paying $${props.items
+          .reduce(
             (x, y) => x + y.quantity * parseFloat(y.price.split("$")[1]),
             0
-          ) * 100
+          )
+          .toFixed(2)}`}
+        amount={
+          props.items
+            .reduce(
+              (x, y) => x + y.quantity * parseFloat(y.price.split("$")[1]),
+              0
+            )
+            .toFixed(2) * 100
         }
         token={onToken}
       >

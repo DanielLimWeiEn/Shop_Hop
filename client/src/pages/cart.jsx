@@ -6,16 +6,14 @@ import CartProduct from "../components/CartProducts";
 import CartSummary from "../components/CartSummary";
 
 const Container = styled.div`
+  box-sizing: border-box;
   height: 100vh;
   width: 100vw;
-`;
-
-const Wrapper = styled.div`
   padding: 20px;
 `;
 
 const Title = styled.h1`
-  font-weight: 300; 
+  font-weight: 300;
   text-align: center;
 `;
 
@@ -37,14 +35,23 @@ const TopButton = styled.button`
 `;
 
 const Bottom = styled.div`
+  box-sizing: border-box;
   display: flex;
+  gap: 20px;
   justify-content: space-between;
 `;
 
-const Info = styled.div`
-  width: 100%;
+const ListingContainer = styled.div`
+  box-sizing: border-box;
+  width: 80%;
   height: 75vh;
   overflow-y: scroll;
+`;
+
+const SummaryContainer = styled.div`
+  width: 20%;
+  height: 75vh;
+  box-sizing: border-box;
 `;
 
 const diffLink = {
@@ -105,29 +112,28 @@ const Cart = () => {
 
   return (
     <Container>
-      <Wrapper>
-        <Title>YOUR BAG</Title>
-        <Top>
-          <TopButton><Link to="/shopping" style={diffLink}>CONTINUE SHOPPING</Link></TopButton>
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
-        </Top>
-        <Bottom>
-          <Info>
-            {items.map((item) => {
-              return (
-                item.quantity > 0 && (
-                  <CartProduct
-                    addOne={addOne}
-                    minusOne={minusOne}
-                    item={item}
-                  />
-                )
-              );
-            })}
-          </Info>
+      <Title>YOUR BAG</Title>
+      <Top>
+        <TopButton>
+          <Link to="/shopping" style={diffLink}>
+            CONTINUE SHOPPING
+          </Link>
+        </TopButton>
+      </Top>
+      <Bottom>
+        <ListingContainer>
+          {items.map((item) => {
+            return (
+              item.quantity > 0 && (
+                <CartProduct addOne={addOne} minusOne={minusOne} item={item} />
+              )
+            );
+          })}
+        </ListingContainer>
+        <SummaryContainer>
           <CartSummary items={items} setItems={setItems} />
-        </Bottom>
-      </Wrapper>
+        </SummaryContainer>
+      </Bottom>
     </Container>
   );
 };

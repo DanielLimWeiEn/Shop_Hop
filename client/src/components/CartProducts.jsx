@@ -2,42 +2,61 @@ import styled from "styled-components";
 import { Add, Remove } from "@mui/icons-material";
 
 const Product = styled.div`
+  height: 30vh;
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
+  border: 0.5px solid lightgray;
+  border-radius: 10px;
 `;
 
 const ProductDetail = styled.div`
-  flex: 2;
   display: flex;
+  height: 100%;
+  width: 70%;
 `;
 
 const Image = styled.img`
-  width: 200px;
+  height: 100%;
+  width: 35%;
+  min-width: 35%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  object-fit: cover;
 `;
 
 const Details = styled.div`
+  box-sizing: border-box;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 `;
 
-const ProductName = styled.span``;
+const ProductName = styled.span`
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
 
-const ProductId = styled.span``;
+const ProductId = styled.span`
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
 
 const PriceDetail = styled.div`
-  flex: 1;
+  height: 100%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 20px;
 `;
 
 const ProductAmountContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
 `;
 
 const ProductAmount = styled.div`
@@ -71,7 +90,10 @@ const CartProduct = (props) => {
           <Remove value={props.item.val} onClick={props.minusOne} />
         </ProductAmountContainer>
         <ProductPrice>
-          $ {parseFloat(props.item.price.split("$")[1]) * props.item.quantity}
+          ${" "}
+          {(
+            parseFloat(props.item.price.split("$")[1]) * props.item.quantity
+          ).toFixed(2)}
         </ProductPrice>
       </PriceDetail>
     </Product>
