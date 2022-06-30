@@ -16,6 +16,7 @@ const Container = styled.div`
 `;
 
 const ProfileBox = styled.div`
+  box-sizing: border-box;
   width: 400px;
   height: 300px;
   display: flex;
@@ -23,23 +24,52 @@ const ProfileBox = styled.div`
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.5);
 `;
+
+const GreetingBox = styled.div`
+  box-sizing: border-box;
+  height: 150px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+`;
+
 const GreetTag = styled.h1`
   font-size: 30px;
   text-align: center;
   padding-bottom: 10px;
 `;
 
-const Description = styled.h2`
+const Description = styled.div`
   font-size: 15px;
   text-align: center;
+`;
+
+const PictureBox = styled.div`
+  box-sizing: border-box;
+  height: 150px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ProfilePicture = styled.img`
+  height: 110px;
+  width: 110px;
 `;
 
 const ProfileCom = (props) => {
   return (
     <Container>
       <ProfileBox>
-        <GreetTag>Hello, {props.user.result.name}</GreetTag>
-        <Description>This is filler Description pretty cool huh?</Description>
+        <PictureBox>
+          <ProfilePicture src="https://img.favpng.com/12/20/1/computer-icons-user-profile-login-avatar-png-favpng-EphX5rTBCrk1QLtEWPmS9h1M9.jpg"/>
+        </PictureBox>
+        <GreetingBox>
+          <GreetTag>Hello, {props.user.result.name}</GreetTag>
+          <Description>Welcome to your ShopHop account!</Description>
+        </GreetingBox>
       </ProfileBox>
     </Container>
   );
