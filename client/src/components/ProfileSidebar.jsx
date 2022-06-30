@@ -1,58 +1,65 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import ManageAccountsSharpIcon from "@mui/icons-material/ManageAccountsSharp";
+import PersonOutlineSharpIcon from "@mui/icons-material/PersonOutlineSharp";
+import HistorySharpIcon from "@mui/icons-material/HistorySharp";
+import ListAltSharpIcon from "@mui/icons-material/ListAltSharp";
 
 const Side = styled.div`
   box-sizing: border-box;
   width: 15vw;
   height: 100vh;
-  background-color: rgb(245, 250, 253);
+  background-color: white;
+  border: 1px solid lightgray;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: stretch;
-  padding: 20px;
 `;
 
-const Picture = styled.img`
-  width: 8vw;
-  height: 100px;
-  border-radius: 50%;
-  margin-bottom: 20px;
-`;
-
-const Greeting = styled.div`
-  width: 15vw;
-  height: 80px;
-  font-size: 30px;
-  font-weight: bold;
-  text-align: center;
-`;
-
-const SideItem = styled.div`
+const SideTop = styled.div`
+  width: 100%;
+  height: 12%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 15vw;
-  height: 80px;
-  font-size: 24px;
+  gap: 7px;
+  font-weight: 200;
+  font-size: 28px;
+`;
+
+const SideItem = styled.div`
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 7%;
+  font-size: 14px;
+  gap: 5px;
   text-align: center;
+  border-bottom: 1px solid lightgray;
+  padding: 7px;
   &:hover {
     color: black;
-    background-color: white;
+    background-color: lightgray;
   }
 `;
 
 const ProfileSidebar = (props) => {
   return (
     <Side>
-      <Picture src="https://img.favpng.com/12/20/1/computer-icons-user-profile-login-avatar-png-favpng-EphX5rTBCrk1QLtEWPmS9h1M9.jpg" />
-      <Greeting>Hello {props.user.result.name}</Greeting>
+      <SideTop>
+        <ManageAccountsSharpIcon style={{ height: "45", width: "45" }} />
+        Account
+      </SideTop>
       <SideItem>
+        <PersonOutlineSharpIcon />
         <Link to="/profile/" style={{ textDecoration: "none", color: "black" }}>
           Profile
         </Link>
       </SideItem>
       <SideItem>
+        <HistorySharpIcon />
         <Link
           to="/profile/history"
           style={{ textDecoration: "none", color: "black" }}
@@ -61,6 +68,7 @@ const ProfileSidebar = (props) => {
         </Link>
       </SideItem>
       <SideItem>
+        <ListAltSharpIcon />
         <Link
           to="/profile/manage"
           style={{ textDecoration: "none", color: "black" }}
