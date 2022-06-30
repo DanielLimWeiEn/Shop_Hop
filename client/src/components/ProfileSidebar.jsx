@@ -34,7 +34,6 @@ const SideItem = styled.div`
   align-items: center;
   width: 100%;
   height: 7%;
-  font-size: 14px;
   gap: 5px;
   text-align: center;
   border-bottom: 1px solid lightgray;
