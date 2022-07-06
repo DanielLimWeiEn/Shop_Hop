@@ -11,7 +11,7 @@ import {
 
 const ChartContainer = styled.div`
   box-sizing: border-box;
-  width: 95%;
+  width: 100%;
   height: 85%;
 `;
 
@@ -60,40 +60,35 @@ const ProfileChart = (props) => {
       },
     ];
 
-    dataForDisplay[0]["Total Spending"] = pastNDays(purchases, 7)?.reduce(
-      (accumulator, purchase) => {
+    dataForDisplay[0]["Total Spending"] = pastNDays(purchases, 7)
+      ?.reduce((accumulator, purchase) => {
         return accumulator + parseFloat(purchase.price.split("$")[1]);
-      },
-      0
-    );
+      }, 0)
+      .toFixed(2);
 
-    dataForDisplay[1]["Total Spending"] = pastNMonths(purchases, 1)?.reduce(
-      (accumulator, purchase) => {
+    dataForDisplay[1]["Total Spending"] = pastNMonths(purchases, 1)
+      ?.reduce((accumulator, purchase) => {
         return accumulator + parseFloat(purchase.price.split("$")[1]);
-      },
-      0
-    );
+      }, 0)
+      .toFixed(2);
 
-    dataForDisplay[2]["Total Spending"] = pastNMonths(purchases, 6)?.reduce(
-      (accumulator, purchase) => {
+    dataForDisplay[2]["Total Spending"] = pastNMonths(purchases, 6)
+      ?.reduce((accumulator, purchase) => {
         return accumulator + parseFloat(purchase.price.split("$")[1]);
-      },
-      0
-    );
+      }, 0)
+      .toFixed(2);
 
-    dataForDisplay[3]["Total Spending"] = pastNMonths(purchases, 12)?.reduce(
-      (accumulator, purchase) => {
+    dataForDisplay[3]["Total Spending"] = pastNMonths(purchases, 12)
+      ?.reduce((accumulator, purchase) => {
         return accumulator + parseFloat(purchase.price.split("$")[1]);
-      },
-      0
-    );
+      }, 0)
+      .toFixed(2);
 
-    dataForDisplay[4]["Total Spending"] = purchases?.reduce(
-      (accumulator, purchase) => {
+    dataForDisplay[4]["Total Spending"] = purchases
+      ?.reduce((accumulator, purchase) => {
         return accumulator + parseFloat(purchase.price.split("$")[1]);
-      },
-      0
-    );
+      }, 0)
+      .toFixed(2);
 
     return dataForDisplay;
   };
@@ -114,7 +109,7 @@ const ProfileChart = (props) => {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Bar dataKey="Total Spending" fill="rgb(204, 179, 255)" />
+          <Bar dataKey="Total Spending" fill="rgb(191, 128, 255)" />
         </BarChart>
       </ResponsiveContainer>
     </ChartContainer>

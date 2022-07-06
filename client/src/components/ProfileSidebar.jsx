@@ -10,7 +10,7 @@ const Side = styled.div`
   width: 15vw;
   height: 100vh;
   background-color: white;
-  border: 1px solid lightgray;
+  border-right: 1px solid lightgray;
   display: flex;
   flex-direction: column;
   align-items: center;
