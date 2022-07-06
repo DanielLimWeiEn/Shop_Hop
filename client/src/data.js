@@ -8,7 +8,7 @@ export const sliderItems = [
     img: shoppingImg,
     title: "SUMMER SALE",
     desc: "DON'T WAIT ANY FURTHER ON SHOPPING DISCOUNTS. JOIN US!",
-    bg: "f5fafd",
+    bg: "f5fafd", 
   },
   {
     id: 2,

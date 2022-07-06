@@ -64,7 +64,7 @@ const ProfileCom = (props) => {
     <Container>
       <ProfileBox>
         <PictureBox>
-          <ProfilePicture src="https://img.favpng.com/12/20/1/computer-icons-user-profile-login-avatar-png-favpng-EphX5rTBCrk1QLtEWPmS9h1M9.jpg"/>
+          <ProfilePicture src="https://www.pngmart.com/files/21/Account-Avatar-Profile-PNG-Photo.png"/>
         </PictureBox>
         <GreetingBox>
           <GreetTag>Hello, {props.user.result.name}</GreetTag>
