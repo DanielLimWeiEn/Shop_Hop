@@ -18,31 +18,26 @@ const Container = styled.div`
 const ItemHolder = styled.div`
   height: 100%;
   width: 65%;
-  border: 1px solid;
-  box-shadow: 10px 10px rgb(245, 250, 253);
 `;
 
 const FormHolder = styled.div`
   height: 100%;
   width: 35%;
-  border: 1px solid;
-  box-shadow: 10px 10px rgb(245, 250, 253);
+  border-left: 0.8px solid grey;
 `;
 
 const ItemHeading = styled.div`
-  font-size: 25px;
-  color: white;
+  box-sizing: border-box;
+  font-size: 20px;
+  height: 6.5%;
   padding-left: 20px;
-  padding-top: 5px;
-  background-color: purple;
-  height: 40px;
 `;
 
 const Form = styled.form`
   box-sizing: border-box;
   height: 100%;
   width: 100%;
-  padding: 20px;
+  padding: 20px 20px 20px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,6 +45,7 @@ const Form = styled.form`
 `;
 
 const InputAndLabel = styled.div`
+  box-sizing: border-box;
   width: 100%;
   height: 10%;
   display: flex;
@@ -62,10 +58,12 @@ const FormInput = styled.input`
   width: 100%;
   height: 80%;
   font-size: 20px;
+  border: none;
+  border-bottom: 1px solid grey;
 `;
 
 const InputLabel = styled.label`
-  font-size: 20px;
+  font-size: 16px;
 `;
 
 const FileInput = styled.div`
@@ -152,7 +150,7 @@ const Manage = (props) => {
         />
       </ItemHolder>
       <FormHolder>
-        <ItemHeading>Add/Edit Purchase</ItemHeading>
+        <ItemHeading>Edit Purchase</ItemHeading>
         <Form onSubmit={handleSubmit}>
           <InputAndLabel>
             <InputLabel>Description:</InputLabel>
@@ -165,7 +163,7 @@ const Manage = (props) => {
           </InputAndLabel>
 
           <InputAndLabel>
-            <InputLabel>Price ($):</InputLabel>
+            <InputLabel>Price:</InputLabel>
             <FormInput
               onChange={handleChange}
               id="price"
