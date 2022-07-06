@@ -209,7 +209,7 @@ const Navbar = () => {
 
               <ProfileDrop>
                 <ProfileBorder>
-                  <ProfileImg src="https://img.favpng.com/12/20/1/computer-icons-user-profile-login-avatar-png-favpng-EphX5rTBCrk1QLtEWPmS9h1M9.jpg" />
+                  <ProfileImg src="https://www.pngmart.com/files/21/Account-Avatar-Profile-PNG-Photo.png" />
 
                   <Profile>
                     <ListTitle>Signed in as </ListTitle>
