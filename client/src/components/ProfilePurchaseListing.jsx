@@ -1,52 +1,62 @@
 import styled from "styled-components";
 
 const Container = styled.div`
+  box-sizing: border-box;
   overflow-y: scroll;
   width: 100%;
   height: 87%;
+  background-color: white;
+  padding: 12px 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
 `;
 
 const ItemBox = styled.div`
-  height: 140px;
+  box-sizing: border-box;
+  height: 100%;
+  width: 23%;
   display: flex;
-  border-bottom: 1px solid grey;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
 `;
 
 const Image = styled.img`
-  margin-left: 20px;
-  height: 120px;
-  width: 100px;
+  height: 90%;
+  width: 100%;
+  object-fit: cover;
 `;
 
 const Description = styled.div`
+  box-sizing: border-box;
+  padding: 5px;
+  height: 10%;
+  width: 100%;
   display: flex;
-  align-items: center;
-  width: min(90%, 1200px);
-  height: 100px;
-  margin-left: 20px;
+  justify-content: space-between;
 `;
 
 const ItemInfo = styled.span`
-  font-size: 20px;
-  font-weight: 600;
-
-  word-wrap: break-word;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 75%;
+  font-size: 14px;
   text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `;
 
 const PriceInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  gap: 15px;
-`;
-
-const Price = styled.span`
-  font-size: 19px;
+  box-sizing: border-box;
+  padding-right: 6px;
+  height: 100%;
+  width: 20%;
+  text-align: right;
+  font-size: 18px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
 `;
 
 const ProfilePurchaseListing = (props) => {
@@ -57,12 +67,16 @@ const ProfilePurchaseListing = (props) => {
           <ItemBox>
             <Image src={listing.itemFile} />
             <Description>
+            <ItemInfo>{listing.description}</ItemInfo>
+            <PriceInfo>{"$" + parseFloat(listing.price.split("$")[1]).toFixed(2)}</PriceInfo>
+            </Description>
+            {/* <Description>
               <ItemInfo>{listing.description}</ItemInfo>
             </Description>
             <PriceInfo>
               <Price>{listing.origin}</Price>
               <Price>{listing.price}</Price>
-            </PriceInfo>
+            </PriceInfo> */}
           </ItemBox>
         );
       })}

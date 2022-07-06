@@ -14,12 +14,13 @@ const Container = styled.div`
 `;
 
 const Top = styled.div`
+  box-sizing: border-box;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 20px;
   height: 50%;
   width: 100%;
+  border-bottom: 0.8px solid grey;
 `;
 
 const Bottom = styled.div`
@@ -33,31 +34,22 @@ const Bottom = styled.div`
 const Summary = styled.div`
   height: 100%;
   width: 50%;
-  border: 1px solid;
-  box-shadow: 10px 10px rgb(245, 250, 253);
 `;
 
 const Spending = styled.div`
   height: 100%;
   width: 50%;
-  border: 1px solid;
-  box-shadow: 10px 10px rgb(245, 250, 253);
 `;
 
 const ItemList = styled.div`
   height: 100%;
   width: 100%;
-  border: 1px solid;
-  box-shadow: 10px 10px rgb(245, 250, 253);
 `;
 
 const ItemHeading = styled.div`
-  font-size: 25px;
-  color: white;
-  padding-left: 20px;
-  padding-top: 5px;
-  background-color: purple;
-  height: 40px;
+  box-sizing: border-box;
+  font-size: 20px;
+  height: 11%;
 `;
 
 const SummaryBody = styled.div`
@@ -72,53 +64,52 @@ const SummaryBody = styled.div`
 const SummarySpending = styled.div`
   box-sizing: border-box;
   width: 100%;
-  height: 50%;
+  height: 30%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  font-size: 36px;
-  padding: 20px;
-  border-bottom: 2px solid;
+  align-items: flex-end;
+  font-size: 70px;
+  padding: 20px 20px 0 20px;
+  color: #00c064;
 `;
 
-const SummaryQuote = styled.div`
+const SummaryMessage = styled.div`
   box-sizing: border-box;
   width: 100%;
-  height: 50%;
+  height: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
-  padding: 20px;
+  color: #797979;
 `;
+
 
 const History = (props) => {
   return (
     <Container>
       <Top>
-        <Summary>
-          <ItemHeading>Overview</ItemHeading>
-          <ProfileChart purchases={props.purchases.data?.purchases} />
-        </Summary>
         <Spending>
           <ItemHeading>Summary</ItemHeading>
           <SummaryBody>
             <SummarySpending>
-              Total Spending:{" $"}
+              {/* Total Spending:{" "} */}
               {props.purchases.data?.purchases
                 .map((x) => parseFloat(x.price.split("$")[1]))
-                .reduce((x, y) => x + y, 0)}
+                .reduce((x, y) => x + y, 0).toFixed(2)}
             </SummarySpending>
-            <SummaryQuote>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </SummaryQuote>
+            <SummaryMessage>
+              Total Purchase Spending Amount
+            </SummaryMessage>
           </SummaryBody>
         </Spending>
+        <Summary>
+          <ItemHeading>Overview</ItemHeading>
+          <ProfileChart purchases={props.purchases.data?.purchases} />
+        </Summary>
       </Top>
       <Bottom>
         <ItemList>
-          <ItemHeading>Items Purchased</ItemHeading>
+          <ItemHeading>Purchases</ItemHeading>
           <ProfilePurchaseListing listings={props.purchases.data?.purchases} />
         </ItemList>
       </Bottom>
