@@ -92,7 +92,6 @@ const History = (props) => {
           <ItemHeading>Summary</ItemHeading>
           <SummaryBody>
             <SummarySpending>
-              {/* Total Spending:{" "} */}
               {props.purchases.data?.purchases
                 .map((x) => parseFloat(x.price.split("$")[1]))
                 .reduce((x, y) => x + y, 0).toFixed(2)}

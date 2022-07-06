@@ -17,12 +17,12 @@ const Container = styled.div`
 
 const ItemHolder = styled.div`
   height: 100%;
-  width: 65%;
+  width: 70%;
 `;
 
 const FormHolder = styled.div`
   height: 100%;
-  width: 35%;
+  width: 30%;
   border-left: 0.8px solid grey;
 `;
 
