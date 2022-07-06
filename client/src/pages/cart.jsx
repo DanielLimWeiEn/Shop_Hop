@@ -15,7 +15,7 @@ const Container = styled.div`
 const Title = styled.h1`
   font-weight: 300;
   text-align: center;
-`; 
+`;
 
 const Top = styled.div`
   display: flex;

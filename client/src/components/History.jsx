@@ -83,7 +83,6 @@ const SummaryMessage = styled.div`
   color: #797979;
 `;
 
-
 const History = (props) => {
   return (
     <Container>
@@ -94,11 +93,10 @@ const History = (props) => {
             <SummarySpending>
               {props.purchases.data?.purchases
                 .map((x) => parseFloat(x.price.split("$")[1]))
-                .reduce((x, y) => x + y, 0).toFixed(2)}
+                .reduce((x, y) => x + y, 0)
+                .toFixed(2)}
             </SummarySpending>
-            <SummaryMessage>
-              Total Purchase Spending Amount
-            </SummaryMessage>
+            <SummaryMessage>Total Purchase Spending Amount</SummaryMessage>
           </SummaryBody>
         </Spending>
         <Summary>

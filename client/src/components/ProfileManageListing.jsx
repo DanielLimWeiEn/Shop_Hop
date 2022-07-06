@@ -146,7 +146,9 @@ const ProfilePurchaseListing = (props) => {
             </Description>
             <PriceInformation>
               <Origin>{listing.origin}</Origin>
-              <Price>{"$" + parseFloat(listing.price.split("$")[1]).toFixed(2)}</Price>
+              <Price>
+                {"$" + parseFloat(listing.price.split("$")[1]).toFixed(2)}
+              </Price>
             </PriceInformation>
           </ItemBox>
         );

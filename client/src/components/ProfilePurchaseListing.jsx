@@ -67,8 +67,10 @@ const ProfilePurchaseListing = (props) => {
           <ItemBox>
             <Image src={listing.itemFile} />
             <Description>
-            <ItemInfo>{listing.description}</ItemInfo>
-            <PriceInfo>{"$" + parseFloat(listing.price.split("$")[1]).toFixed(2)}</PriceInfo>
+              <ItemInfo>{listing.description}</ItemInfo>
+              <PriceInfo>
+                {"$" + parseFloat(listing.price.split("$")[1]).toFixed(2)}
+              </PriceInfo>
             </Description>
             {/* <Description>
               <ItemInfo>{listing.description}</ItemInfo>
