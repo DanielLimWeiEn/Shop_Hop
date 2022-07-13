@@ -96,6 +96,47 @@ describe("Test Price Comparison Feature", () => {
       "#root > div:nth-child(3) > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > a"
     ).should("not.have.attr", "href", "undefined");
 
+    // d. Test the recommendation modal functionality.
+    // Checks presence of recommendation button and clicks it.
+    cy.findByRole("button", { name: /recommendations/i }).should("be.visible");
+    cy.findByRole("button", { name: /recommendations/i }).click();
+
+    // Checks that items are being show properly.
+    cy.findByRole("heading", { name: /top 3 items/i }).should("be.visible");
+    cy.get(
+      "body > div:nth-child(6) > div:nth-child(3) > div:nth-child(2)"
+    ).should("be.visible");
+
+    // Checks that there are the add to cart and link buttons.
+    cy.get(
+      "body > div:nth-child(6) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > button"
+    ).should("be.visible");
+    cy.get(
+      "body > div:nth-child(6) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > a"
+    ).should("be.visible");
+
+    // Check that link exists and is not undefined as a href attribute.
+    cy.get(
+      "body > div:nth-child(6) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > a"
+    ).should("not.have.attr", "href", "undefined");
+
+    // Add 3 items to cart
+    cy.get(
+      "body > div:nth-child(6) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > button"
+    ).click();
+    cy.get(
+      "body > div:nth-child(6) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > button"
+    ).click();
+    cy.get(
+      "body > div:nth-child(6) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > button"
+    ).click();
+
+    cy.get('body').click("left");
+
+    // Check that items are added to cart and that modal has closed.
+    cy.findByRole("button", { name: /recommendations/i }).should("be.visible");
+    cy.findByRole("link", { name: /5/i }).should("be.visible");
+
     // 5. Logout and test that we have logged out.
     cy.get(
       "#root > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2) > div"
