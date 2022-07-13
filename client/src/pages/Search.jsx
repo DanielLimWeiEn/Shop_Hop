@@ -72,7 +72,7 @@ const Searching = () => {
   return (
     <Container>
       <SearchEngine setListings={setListings} setIsSearching={setIsSearching} />
-      <FilterBar listings={listings} orderValues={orderValues} />
+      <FilterBar listings={listings} orderValues={orderValues} onAdd={onAdd} />
       <Listings listings={listings} isSearching={isSearching} onAdd={onAdd} />
     </Container>
   );

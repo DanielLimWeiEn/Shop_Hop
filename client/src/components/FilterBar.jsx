@@ -38,7 +38,7 @@ const FilterBar = (props) => {
       </Left>
       <Right>
         {props.listings.length !== 0 && (
-          <RecommendationModal listings={props.listings} />
+          <RecommendationModal listings={props.listings} onAdd={props.onAdd} />
         )}
         <Select
           onChange={updateOrder}

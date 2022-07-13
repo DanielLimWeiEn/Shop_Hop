@@ -2,6 +2,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Modal, Button } from "@mui/material";
 import StarRateSharpIcon from "@mui/icons-material/StarRateSharp";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ShortcutIcon from "@mui/icons-material/Shortcut";
 
 const Container = styled.div``;
 
@@ -72,6 +74,7 @@ const ModalProduct = styled.div`
 
 const ModalProductDetail = styled.div`
   display: flex;
+  flex-direction: column;
   height: 100%;
   width: 45%;
 `;
@@ -86,10 +89,52 @@ const ModalImage = styled.img`
 `;
 
 const Details = styled.div`
+  height: 50%;
+  width: 100%;
   box-sizing: border-box;
   padding: 20px;
   display: flex;
   flex-direction: column;
+`;
+
+const ButtonBox = styled.div`
+  box-sizing: border-box;
+  padding-left: 20px;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+const CartButton = styled.button`
+  box-sizing: border-box;
+  height: 50%;
+  width: 35%;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid grey;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+`;
+
+const LinkButton = styled.a`
+  box-sizing: border-box;
+  height: 50%;
+  width: 35%;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid grey;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: black;
 `;
 
 const ModalProductName = styled.span`
@@ -164,6 +209,14 @@ const RecommendationModal = (props) => {
                           {" " + item?.name}
                         </ModalProductName>
                       </Details>
+                      <ButtonBox>
+                        <CartButton onClick={(event) => props.onAdd(item.val)}>
+                          <ShoppingCartIcon /> Cart
+                        </CartButton>
+                        <LinkButton href={item.link}>
+                          <ShortcutIcon /> Link
+                        </LinkButton>
+                      </ButtonBox>
                     </ModalProductDetail>
                     <ModalPriceDetail>
                       <ModalProductRating>
