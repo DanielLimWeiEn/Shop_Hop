@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { MenuItem, Select } from "@mui/material";
 
+import RecommendationModal from "./RecommendationModal";
+
 const Container = styled.div`
   box-sizing: border-box;
   height: 10%;
@@ -14,7 +16,11 @@ const Container = styled.div`
 
 const Left = styled.div``;
 
-const Right = styled.div``;
+const Right = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 24px;
+`;
 
 const ProductsNo = styled.span`
   font-size: 18px;
@@ -30,7 +36,8 @@ const FilterBar = (props) => {
       <Left>
         <ProductsNo>{props.listings.length} results</ProductsNo>
       </Left>
-      <Right>
+      <Right> {/** Conditionall render it */}
+        <RecommendationModal listings={props.listings} />
         <Select
           onChange={updateOrder}
           defaultValue="Relevance"

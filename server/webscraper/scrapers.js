@@ -22,10 +22,12 @@ export const scrapeFromAmazon = async (query) => {
           let link = item
             .querySelector(".a-link-normal.s-no-outline")
             .getAttribute("href");
-          
+
           let rating = 2.5;
           try {
-            rating = item.querySelector(".a-row.a-size-small > span:nth-child(1)").getAttribute("aria-label");
+            rating = item
+              .querySelector(".a-row.a-size-small > span:nth-child(1)")
+              .getAttribute("aria-label");
           } catch (error) {
             console.log("This item has no rating.");
           }
