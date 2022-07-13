@@ -36,8 +36,10 @@ const FilterBar = (props) => {
       <Left>
         <ProductsNo>{props.listings.length} results</ProductsNo>
       </Left>
-      <Right> {/** Conditionall render it */}
-        <RecommendationModal listings={props.listings} />
+      <Right>
+        {props.listings.length !== 0 && (
+          <RecommendationModal listings={props.listings} />
+        )}
         <Select
           onChange={updateOrder}
           defaultValue="Relevance"
