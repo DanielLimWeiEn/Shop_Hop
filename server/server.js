@@ -21,7 +21,11 @@ app.use('/shopping', shoppingRoutes);
 app.use('/profile', profileRoutes);
 app.use('/payment', paymentRoutes);
 
-const PORT = 5000;
+app.get("/", (req, res) => {
+    res.send("Hello to ShopHop API");
+})
+
+const PORT = process.env.PORT || 5000;
 const CONNECTION_URL = process.env.CONNECTION_URL;
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
