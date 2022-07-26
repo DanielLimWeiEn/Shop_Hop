@@ -1,6 +1,10 @@
 # ShopHop
 A price comparison web application built using the MERN stack.
 
+## Note
+Do open the Backend server and wait for it to display the greeting "Hello to ShopHop API" first before attempting to access the
+frontend.
+
 | Information | Links|
 | --- | --- |
 | README | [Link](https://docs.google.com/document/d/1H7JOCpQ5OAtGrIciA-CQJ8qwRTSO9jOImZdv7CpbRWc/edit?usp=sharing)|
@@ -9,7 +13,3 @@ A price comparison web application built using the MERN stack.
 | Project Log | [Link](https://docs.google.com/document/d/1QkehlFau_v0ky4fq87W9xUBDP3JLt0vYWGQWe4XM6pY/edit?usp=sharing) |
 | Frontend | [Link](https://shophop-orbital.netlify.app) |
 | Backend | [Link](https://shophopserver.herokuapp.com) |
-
-## Note
-Do open the Backend server and wait for it to display the greeting "Hello to ShopHop API" first before attempting to access the
-frontend.
