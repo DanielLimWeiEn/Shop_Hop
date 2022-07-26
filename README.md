@@ -3,7 +3,7 @@ A price comparison web application built using the MERN stack.
 
 ## Note
 Do open the Backend server and wait for it to display the greeting "Hello to ShopHop API" first before attempting to access the
-frontend. Logging in and signing up may take a while.
+frontend. Certain features may take a while to load.
 
 
 | Information | Links|
