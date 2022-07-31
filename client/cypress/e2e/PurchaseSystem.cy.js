@@ -2,7 +2,8 @@
 describe("Testing Purchase System and Shopping Cart Features", () => {
   it("Check that all the features of the purchase system and shopping cart work", () => {
     // 1. Visit local host.
-    cy.visit("https://shophop-orbital.netlify.app/");
+    //cy.visit("https://shophop-orbital.netlify.app/");
+    cy.visit("http://localhost:3000");
 
     // 2. Login
     cy.findByRole("link", { name: /login/i }).click();

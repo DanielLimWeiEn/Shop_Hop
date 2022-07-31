@@ -2,7 +2,8 @@
 describe("Test Price Comparison Feature", () => {
   it("Check that our login and register system has proper error handling and works", () => {
     // 1. Visit local host.
-    cy.visit("https://shophop-orbital.netlify.app/");
+    //cy.visit("https://shophop-orbital.netlify.app/");
+    cy.visit("http://localhost:3000");
 
     // 2. Click the login button and access the register page.
     cy.findByRole("link", { name: /login/i }).click();

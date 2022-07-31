@@ -2,9 +2,9 @@ import puppeteer from "puppeteer";
 
 export const scrapeFromAmazon = async (query) => {
   let data;
+  const browser = await puppeteer.launch();
   try {
     await (async () => {
-      const browser = await puppeteer.launch();
       const page = await browser.newPage();
 
       await page.goto("https://www.amazon.sg");
@@ -51,20 +51,21 @@ export const scrapeFromAmazon = async (query) => {
       });
 
       data = grabInfo;
-      await browser.close();
     })();
   } catch (error) {
     console.log(error);
     data = [];
+  } finally {
+    await browser.close();
   }
   return data;
 };
 
 export const scrapeFromEbay = async (query) => {
   let data;
+  const browser = await puppeteer.launch();
   try {
     await (async () => {
-      const browser = await puppeteer.launch();
       const page = await browser.newPage();
 
       await page.goto("https://www.ebay.com");
@@ -103,11 +104,12 @@ export const scrapeFromEbay = async (query) => {
       });
 
       data = grabInfo;
-      await browser.close();
     })();
   } catch (error) {
     console.log(error);
     data = [];
+  } finally {
+    await browser.close();
   }
   return data;
 };
