@@ -2,14 +2,13 @@ import puppeteer from "puppeteer";
 
 export const scrapeFromAmazon = async (query) => {
   let data;
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ["--no-sandbox"],
+  });
   try {
     await (async () => {
-      const browser = await puppeteer.launch({
-        headless: true,
-        args: ["--no-sandbox"],
-      });
       const page = await browser.newPage();
-
       await page.goto("https://www.amazon.sg");
 
       await page.type("#twotabsearchtextbox", query);
@@ -54,25 +53,25 @@ export const scrapeFromAmazon = async (query) => {
       });
 
       data = grabInfo;
-      await browser.close();
     })();
   } catch (error) {
     console.log(error);
     data = [];
+  } finally {
+    await browser.close();
   }
   return data;
 };
 
 export const scrapeFromEbay = async (query) => {
   let data;
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ["--no-sandbox"],
+  });
   try {
     await (async () => {
-      const browser = await puppeteer.launch({
-        headless: true,
-        args: ["--no-sandbox"],
-      });
       const page = await browser.newPage();
-
       await page.goto("https://www.ebay.com");
 
       await page.type("#gh-ac", query);
@@ -109,11 +108,12 @@ export const scrapeFromEbay = async (query) => {
       });
 
       data = grabInfo;
-      await browser.close();
     })();
   } catch (error) {
     console.log(error);
     data = [];
+  } finally {
+    await browser.close();
   }
   return data;
 };
