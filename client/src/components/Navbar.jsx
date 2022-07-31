@@ -48,7 +48,6 @@ const MenuItem = styled.div`
 
 const MenuLink = styled.div`
   font-size: 14px;
-  cursor: pointer;
   text-decoration: none;
   margin-right: 30px;
 `;
@@ -110,6 +109,11 @@ const ProfileImg = styled.img`
   }
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: white;
+`;
+
 const ListItem = styled.li`
   display: flex;
   padding: 10px;
@@ -120,6 +124,10 @@ const ListItem = styled.li`
   &:hover {
     color: black;
     background-color: white;
+  }
+
+  &:hover ${StyledLink} {
+    color:black;
   }
 `;
 
@@ -134,14 +142,7 @@ const ProfileName = styled.span`
   font-weight: 700;
 `;
 
-const StyledLink = styled(Link)`
-  color: white;
-  text-decoration: none;
-  &:hover {
-    color: black;
-    background-color: white;
-  }
-`;
+
 
 const linkStyle = {
   textDecoration: "none",

@@ -2,7 +2,7 @@
 describe("Test Price Comparison Feature", () => {
   it("Check that all the features of the web scraper and price comparison page work", () => {
     // 1. Visit local host.
-    cy.visit("http://localhost:3000");
+    cy.visit("https://shophop-orbital.netlify.app/");
 
     // 2. Login
     cy.findByRole("link", { name: /login/i }).click();

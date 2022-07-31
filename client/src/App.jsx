@@ -14,7 +14,7 @@ import Profile from "./pages/Profile";
 const App = () => {
   return (
     <BrowserRouter>
-      <Announcement />
+      <Announcement /> 
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
