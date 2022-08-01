@@ -14,3 +14,12 @@ frontend. Certain features may take a while to load.
 | Project Log | [Link](https://docs.google.com/document/d/1QkehlFau_v0ky4fq87W9xUBDP3JLt0vYWGQWe4XM6pY/edit?usp=sharing) |
 | Frontend | [Link](https://shophop-orbital.netlify.app) |
 | Backend | [Link](https://shophopserver.herokuapp.com) |
+
+## Payment Information
+
+In order to test out our payment system, please make use of the payment information below.
+
+* Credit Card Number: 4242424242424242
+* Date: 12/34
+* CVV: 123
+* Other Information: Anything
